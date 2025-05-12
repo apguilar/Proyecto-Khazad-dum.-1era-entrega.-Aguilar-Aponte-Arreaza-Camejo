@@ -1,1 +1,6 @@
-# Proyecto-Khazad-dum.-1era-entrega.-Aguilar-Aponte-Arreaza-Camejo
+Proyecto Khazad-dum. 1era-entrega.
+
+Andrea Aguilar
+Daniela Aponte
+Adrián Arreaza
+Gabriel Camejo
