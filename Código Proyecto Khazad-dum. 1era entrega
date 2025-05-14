@@ -2953,78 +2953,79 @@ int main() {
         std::cin.ignore();
 
         switch (opcion) {
-        case 1:
-        std::cout << "\nComing Soon...\n";
-        std::cout << "Regresando al Menú Principal...\n";
-        this_thread::sleep_for(chrono::seconds(4));
-        system("cls");
-        break;
-        case 2:
-        do {
-        mostrarMenuElementos();
-        std::cin >> opcion2;
-        std::cin.ignore();
-        switch (opcion2) {
-        case 1:
-        do {
-        cout << endl << "--- MENÚ PRINCIPAL ---" << endl;
-        cout << "1. Gestionar Héroes" << endl;
-        cout << "2. Gestionar Especies" << endl;
-        cout << "3. Volver al Menu Anterior" << endl;
-        cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
-        cin >> opcion1;
-        cin.ignore();
+            case 1:
+            std::cout << "\nComing Soon...\n";
+            std::cout << "Regresando al Menú Principal...\n";
+            this_thread::sleep_for(chrono::seconds(4));
+            system("cls");
+            break;
+            case 2:
+                do {
+                    mostrarMenuElementos();
+                    std::cin >> opcion2;
+                    std::cin.ignore();
 
-        switch (opcion1) {
-        case 1:
-        gestionarPersonajes(&listaHeroes, &listaEspeciesGlobal);
-        break;
-        case 2:
-        gestionarEspecies(&listaEspeciesGlobal);
-        break;
-        case 3:
-        cout << "Volviendo al menu anterior...\n";
-        break;
-        default:
-        cout << "Opción inválida. Intente de nuevo.\n";
+                    switch (opcion2) {
+                        case 1:
+                            do {
+                                cout << endl << "--- MENÚ PRINCIPAL ---" << endl;
+                                cout << "1. Gestionar Héroes" << endl;
+                                cout << "2. Gestionar Especies" << endl;
+                                cout << "3. Volver al Menu Anterior" << endl;
+                                cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+                                cin >> opcion1;
+                                cin.ignore();
+
+                                switch (opcion1) {
+                                    case 1:
+                                        gestionarPersonajes(&listaHeroes, &listaEspeciesGlobal);
+                                        break;
+                                    case 2:
+                                        gestionarEspecies(&listaEspeciesGlobal);
+                                        break;
+                                    case 3:
+                                        cout << "Volviendo al menu anterior...\n";
+                                        break;
+                                    default:
+                                        cout << "Opción inválida. Intente de nuevo.\n";
+                                }
+                            } while (opcion1 != 3);
+                                break;
+                        case 2:
+                            menuOrcos(cabeza_especies_orco);
+                            break;
+                        case 3:
+                            mostrarMenuImplemento();
+                            break;                      
+                        case 4:
+                            mostrarMenuSalas();  
+                            break;
+                        case 5:
+                            std::cout << "Volviendo al menu...\n";
+                            break;
+                        default:
+                            std::cout << "Opción inválida. Intente de nuevo.\n";
+                    }
+                } while(opcion2 != 5);
+                break;
+            case 3:
+                std::cout << "Saliendo del juego...\n";
+                salir();
+                break;
+            default:
+                std::cout << "Opción inválida. Intente de nuevo.\n";
         }
-        } while (opcion1 != 3);
-        break;
-        case 2:
-        menuOrcos(cabeza_especies_orco);
-        break;
-        case 3:
-        mostrarMenuImplemento();
-        break;                      
-        case 4:
-        mostrarMenuSalas();  
-        break;
-        case 5:
-        std::cout << "Volviendo al menu...\n";
-        break;
-        default:
-        std::cout << "Opción inválida. Intente de nuevo.\n";
-        }
-        } while(opcion2 != 5);
-        break;
-        case 3:
-        std::cout << "Saliendo del juego...\n";
-        salir();
-        break;
-        default:
-        std::cout << "Opción inválida. Intente de nuevo.\n";
-        }
-        } while (opcion != 3);
-            
-            // Liberamos la memoria utilizada por la lista
-            limpiarSalas(&listaSalas);             
-            limpiarHeroes(&listaHeroes);
-            limpiarEspecies(&listaEspeciesGlobal);
-            liberarEstructura(cabezaOrco);
-            ListaArma.limpiarArma();
-            ListaDefensa.limpiarDefensa();
-            listaCura.limpiarCura();
-            listaPoder_Magico.limpiarPoder_Magico();
+    } while (opcion != 3);
+                
+    // Liberamos la memoria utilizada por la lista
+    limpiarSalas(&listaSalas);             
+    limpiarHeroes(&listaHeroes);
+    limpiarEspecies(&listaEspeciesGlobal);
+    liberarEstructura(cabezaOrco);
+    ListaArma.limpiarArma();
+    ListaDefensa.limpiarDefensa();
+    listaCura.limpiarCura();
+    listaPoder_Magico.limpiarPoder_Magico();
 
     return 0;                           
 }                                       
