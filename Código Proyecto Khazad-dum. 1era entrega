@@ -206,11 +206,7 @@ string validarLongitudString(const string& prompt, int longitud) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El texto ingresado es: " << input << std::endl;   
             std::cout << "Y excede el límite de " << longitud << " caracteres.\n";    
-            std::cout << "Intente nuevamente.\n" << endl;
-        } else if (input.empty()) {
-            std::cout << "----------- ERROR -----------\n";
-            std::cout << "El campo no puede estar vacío.\n";   
-            std::cout << "Intente nuevamente.\n" << endl;  
+            std::cout << "Intente nuevamente.\n" << endl; 
         } else {
             valid = true;
         }
@@ -418,6 +414,8 @@ void anadirNuevaEspecieDesdeUsuario(ListaEspecies* lista) {
         actual->siguiente = nuevaEspecie;
     }
     lista->cantidadEspecies++;
+    cout << "\nCreando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
     cout << "Especie '" << nombre_especie << "' agregada exitosamente!\n";
 }
 
@@ -499,6 +497,8 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
                 cin.ignore(10000, '\n');
             }
             actual->fortaleza_base = nuevaFortaleza;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             cout << "Fortaleza Base de " << actual->nombre_especie << " actualizado a " << actual->fortaleza_base << " correctamente.\n";
         
             break;
@@ -516,6 +516,8 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
                 cin.ignore(10000, '\n');
             }
             actual->salud_base = nuevaSalud;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             cout << "Salud Base de " << actual->nombre_especie << " actualizado a " << actual->salud_base << " correctamente.\n";
         
             break;
@@ -533,6 +535,8 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
                 cin.ignore(10000, '\n');
             }
             actual->rapidez_base = nuevaRapidez;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             cout << "Rapidez Base de " << actual->nombre_especie << " actualizado a " << actual->rapidez_base << " correctamente.\n";
         
             break;
@@ -595,6 +599,8 @@ void eliminarEspecie(ListaEspecies* listaEspecies) {
 
     delete actual;
     listaEspecies->cantidadEspecies--;
+    cout << "\nEliminando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
     cout << "Especie de héroe eliminada exitosamente!\n"<<endl;
 }
 
@@ -666,6 +672,8 @@ void anadirPersonaje(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
         actual->siguiente = nuevoHeroe;
     }
     listaHeroes->cantidad++;
+    cout << "\nCreando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
     cout << "Héroe '" << nombre << "' agregado exitosamente!\n";
 }
 
@@ -735,6 +743,8 @@ void modificarHeroe(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
         case 1: {
             string nuevoNombre = obtenerNombre("Ingrese el nuevo nombre del Héroe " + actual->nombre + ", máximo 20 caracteres: ");
             actual->nombre = nuevoNombre;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             std::cout << "Nombre de Héroe actualizado a '" << actual->nombre << "' correctamente.\n";
             break;
         }
@@ -759,6 +769,8 @@ void modificarHeroe(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
             }
 
             actual->especie = especieActual;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             cout << "Especie del Héroe " << actual->nombre << " actualizado a " << actual->especie->nombre_especie << " correctamente.\n";
         
             break;
@@ -811,8 +823,10 @@ void eliminarHeroe(ListaHeroes* listaHeroes) {
 
     delete actual;
     listaHeroes->cantidad--;
+    cout << "\nEliminando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
     cout << "Héroe eliminado exitosamente!\n";
-}
+};
 
 void limpiarHeroes(ListaHeroes* listaHeroes) {
     Heroe* actual = listaHeroes->cabeza;
@@ -856,6 +870,8 @@ void gestionarEspecies(ListaEspecies* listaEspecies) {
                 break;
             case 5:
                 cout << "Volviendo al menú principal...\n";
+                this_thread::sleep_for(chrono::seconds(3));
+                system("cls");
                 break;
             default:
                 cout << "Opción inválida. Intente de nuevo.\n";
@@ -891,6 +907,8 @@ void gestionarPersonajes(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies)
                 break;
             case 5:
                 cout << "Volviendo al menú principal...\n";
+                this_thread::sleep_for(chrono::seconds(3));
+                system("cls");
                 break;
             default:
                 cout << "Opción inválida. Intente de nuevo.\n";
@@ -2763,7 +2781,7 @@ void limpiarSalas(Sala* listaSalas) {
 // Funcion principal con el menu
 void mostrarMenuSalas() {
     Sala* listaSalas = nullptr; 
-    int opcion;
+    int opcionSala;
 
     do {
         cout << "\n--- GESTION DE SALAS ---\n";
@@ -2773,10 +2791,10 @@ void mostrarMenuSalas() {
         cout << "4. Eliminar una Sala\n";
         cout << "5. Volver al menu anterior\n"<<endl;
         cout << "\nIngrese el número correspondiente a la opcion que desea seleccionar: "<<endl;
-        cin >> opcion;
+        cin >> opcionSala;
         limpiarBuffer();
 
-        switch (opcion) {
+        switch (opcionSala) {
             case 1:
                 agregarSala(listaSalas);
                 break;
@@ -2795,7 +2813,7 @@ void mostrarMenuSalas() {
             default:
                 cout << "Opcion inválida. Intente de nuevo.\n";
         }
-    } while (opcion != 5);
+    } while (opcionSala != 5);
 }
 
 
@@ -2898,12 +2916,8 @@ void mostrarMenuElementos() {
 
 void salir() 
 {
-    cout<<"¡Gracias por jugar Khazad-dum!" << endl;
-    cout<<"¡Hasta la próxima aventura!\n" << endl;
-
-	cout<<"Presione ENTER para salir";
-    string x;
-    cin >> x;
+    cout<<"\n¡Gracias por jugar Khazad-dum!" << endl;
+    cout<<"¡Hasta la proxima aventura!\n" << endl;
 	system("exit");
 }
 
@@ -3010,6 +3024,7 @@ int main() {
                 break;
             case 3:
                 std::cout << "Saliendo del juego...\n";
+                this_thread::sleep_for(chrono::seconds(4));
                 salir();
                 break;
             default:
