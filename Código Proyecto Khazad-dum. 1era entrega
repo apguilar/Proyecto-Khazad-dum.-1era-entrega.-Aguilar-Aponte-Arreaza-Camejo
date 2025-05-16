@@ -16,7 +16,7 @@ using namespace std;
 
 
 
-// ESTRUCTURAS ESPECIES ORCOS Y HÉROES. PERSONAJES DE HÉROES. 
+// ESTRUCTURAS ESPECIES ORCOS Y HeROES. PERSONAJES DE HeROES. 
 
 struct Especie_Heroe { 
     string nombre_especie;
@@ -38,7 +38,7 @@ struct Especie_Orco {
 struct Heroe {
     string nombre;
     Especie_Heroe *especie;                  // Puntero a una Especie_Heroe  
-    //Implemento *mochila;                    // Dato para sección JUGAR. MOCHILA: Lista de implementos, se admitirá un límite de 5 implementos 
+    //Implemento *mochila;                    // Dato para seccion JUGAR. MOCHILA: Lista de implementos, se admitira un limite de 5 implementos 
     Heroe *siguiente;                     
 };
 
@@ -48,7 +48,7 @@ struct ListaEspecies {
     int cantidadEspecies;
 };
 
-// Estructura para gestionar la lista de héroes
+// Estructura para gestionar la lista de heroes
 struct ListaHeroes {
     Heroe* cabeza;
     int cantidad;
@@ -67,24 +67,23 @@ struct ListaHeroes {
 
 
 
-
-// ESTRUCTURA ARMA, CURA, DEFENSA Y PODER MÁGICO. IMPLEMENTO QUE CONTIENE UNO SOLO DE TODOS.
+// ESTRUCTURA ARMA, CURA, DEFENSA Y PODER MaGICO. IMPLEMENTO QUE CONTIENE UNO SOLO DE TODOS.
 
 // Estructura Armas
 struct Arma {                 
     string nombre;             
     int durabilidad_base;              // Durabilidad en usos.
-    //int durabilidad_actual;          // Dato para sección JUGAR. Comenzaría = a durabilidad y se va restando. Al llegar a 0, se inhabilita su uso.
-    int dano_base;                     // Cantidad de daño por ataque.
-    int fortaleza_requerida;           // Fortaleza mínima del héroe para utilizarla.
+    //int durabilidad_actual;          // Dato para seccion JUGAR. Comenzaria = a durabilidad y se va restando. Al llegar a 0, se inhabilita su uso.
+    int dano_base;                     // Cantidad de dano por ataque.
+    int fortaleza_requerida;           // Fortaleza minima del heroe para utilizarla.
     Arma *siguiente;
 };
 
 // Estructura Cura
 struct Cura {            
     string nombre;
-    int uso_maximo;              // Puede ser x5, x10, etc., dependiendo de cuántas veces pueda aplicarla
-    //int uso_actual;            // Dato para sección JUGAR. Comenzaría = a uso_maximo y se va restando. Al llegar a 0, se inhabilita su uso
+    int uso_maximo;              // Puede ser x5, x10, etc., dependiendo de cuantas veces pueda aplicarla
+    //int uso_actual;            // Dato para seccion JUGAR. Comenzaria = a uso_maximo y se va restando. Al llegar a 0, se inhabilita su uso
     int suma_salud;              // Valor que se agrega a salud. Ej balanceado: +60 HP x2 | +20 HP x5
     Cura *siguiente;
 };
@@ -93,21 +92,21 @@ struct Cura {
 struct Defensa  {           
     string nombre;
     int durabilidad_base;              // Cada turno en que haya sido utilizada, se le reduce 10%
-    //int durabilidad_actual;          // Dato para sección JUGAR. Comenzaría = a durabilidad y se va restando. Al llegar a 0, se inhabilita su uso.
+    //int durabilidad_actual;          // Dato para seccion JUGAR. Comenzaria = a durabilidad y se va restando. Al llegar a 0, se inhabilita su uso.
     int valor_proteccion;              // Se le resta al ataque recibido
     Defensa *siguiente;
 };
 
-// Estructura Poder Mágico 
-// IMPORTANTE: Para esta entrega, los poderes mágicos permitirán añadirle cierta cantidad a algún campo del héroe.
-//             Próxima entrega, poderes mágicos personalizados.
+// Estructura Poder Magico 
+// IMPORTANTE: Para esta entrega, los poderes magicos permitiran anadirle cierta cantidad a algun campo del heroe.
+//             Proxima entrega, poderes magicos personalizados.
 
 struct Poder_Magico {      
     string nombre;  
-    int uso_maximo;              // 1 para único uso. Se asigna de forma predeterminada.
-    //int uso_actual;            // Dato para sección JUGAR. Comenzaría = a uso_maximo y se va restando. Al llegar a 0, se inhabilita su uso.
-    //int modificacion;          // Ej: Sumar valor a cant, Duplicar cant actual x2 sin sobrepasar límite, Invisibilidad por dos turnos, Derrotar a todos los orcos con un solo ataque, Defensa total en la próxima batalla. 
-    int valor_modificacion;      // Cantidad de daño, curación, defensa o cualidad que aporta.
+    int uso_maximo;              // 1 para unico uso. Se asigna de forma predeterminada.
+    //int uso_actual;            // Dato para seccion JUGAR. Comenzaria = a uso_maximo y se va restando. Al llegar a 0, se inhabilita su uso.
+    //int modificacion;          // Ej: Sumar valor a cant, Duplicar cant actual x2 sin sobrepasar limite, Invisibilidad por dos turnos, Derrotar a todos los orcos con un solo ataque, Defensa total en la proxima batalla. 
+    int valor_modificacion;      // Cantidad de dano, curacion, defensa o cualidad que aporta.
     int campo_modificacion;      // 1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa
     Poder_Magico *siguiente;
 };
@@ -117,7 +116,7 @@ struct Poder_Magico {
 //             No se trabaja en esta entrega.
 
 struct Implemento {       
-    int tipo;                               // Ataque =1, Defensa =2, Cura =3, Poder mágico =4. Para saber cuál puntero tiene el implemento.
+    int tipo;                               // Ataque =1, Defensa =2, Cura =3, Poder magico =4. Para saber cual puntero tiene el implemento.
     Arma *implemento_arma;                  // Se apunta a una sola estructura, el resto apunta a NULL.
     Defensa *implemento_defensa;          
     Cura *implemento_cura;
@@ -144,18 +143,23 @@ struct Implemento {
 struct Sala {
     string nombre;
     int id_sala;
-    //Salas_Adyacentes *adyacencias;        // Dato para sección JUGAR.
-    //int cantidad_orcos_en_sala;           // Dato para sección JUGAR.
+    //Salas_Adyacentes *adyacencias;        // Dato para seccion JUGAR.
+    //int cantidad_orcos_en_sala;           // Dato para seccion JUGAR.
     Sala *siguiente;
 };
 
-// Estructura Sala adyacente                // Estructura utilizada en sección JUGAR.
+// Estructura Sala adyacente                // Estructura utilizada en seccion JUGAR.
 /*struct Salas_Adyacentes {
     Sala *sala_adyacente;
     int distancia; 
     Salas_Adyacentes *siguiente;
 };*/
 
+// Estructura para gestionar la lista de salas
+struct ListaSalas {
+    Sala* cabeza;
+    int cantidadSalas;
+};
 
 
 
@@ -172,9 +176,9 @@ struct Sala {
 
 void validarLongitudNombre(string& input, int longitudMaxima) {
     while (input.length() > longitudMaxima) {
-        cout << "----------- ERROR -----------\n";
+        cout << "\n----------- ERROR -----------\n";
         cout << "El texto ingresado es: " << input << endl;   
-        cout << "Y no debe exceder el límite de " << longitudMaxima << " caracteres.\n";    
+        cout << "Y no debe exceder el limite de " << longitudMaxima << " caracteres.\n";    
         cout << "Intente nuevamente.\n" << endl;
         getline(cin, input);
     }
@@ -182,12 +186,12 @@ void validarLongitudNombre(string& input, int longitudMaxima) {
 
 string obtenerNombre(const string& prompt) {
     string input;
-    const int longitudMaxima = 20; // Longitud máxima permitida
+    const int longitudMaxima = 20; // Longitud maxima permitida
 
     cout << prompt;
     getline(cin, input);
 
-    // Llama a la función para validar la longitud del input
+    // Llama a la funcion para validar la longitud del input
     validarLongitudNombre(input, longitudMaxima);
 
     return input;
@@ -203,15 +207,21 @@ string validarLongitudString(const string& prompt, int longitud) {
         std::getline(std::cin, input);
         
         if (input.length() > longitud) {
-            std::cout << "----------- ERROR -----------\n";
+            std::cout << "\n----------- ERROR -----------\n";
             std::cout << "El texto ingresado es: " << input << std::endl;   
-            std::cout << "Y excede el límite de " << longitud << " caracteres.\n";    
+            std::cout << "Y excede el limite de " << longitud << " caracteres.\n";    
             std::cout << "Intente nuevamente.\n" << endl; 
         } else {
             valid = true;
         }
     }
     return input;
+}
+
+void pausa() {
+    cout << "\nPresione ENTER para continuar...";
+    cin.get(); 
+ 
 }
 
 
@@ -226,7 +236,8 @@ string validarLongitudString(const string& prompt, int longitud) {
 
 
 
-// FUNCIONES PARA CREAR (ESPECIES HÉROES Y ORCOS, PERSONAJE HÉROES, SALA, CADA IMPLEMENTO).
+
+// FUNCIONES PARA CREAR (ESPECIES HeROES Y ORCOS, PERSONAJE HeROES, SALA, CADA IMPLEMENTO).
 
 void crearOrco(Especie_Orco*&cabezaOrco, const string& nombre_especieOrco, int dano_baseOrco, int salud_baseOrco, int rapidez_baseOrco) {
     Especie_Orco* nuevoOrco = new Especie_Orco();
@@ -237,7 +248,7 @@ void crearOrco(Especie_Orco*&cabezaOrco, const string& nombre_especieOrco, int d
     nuevoOrco->siguiente = nullptr;
 
     if (cabezaOrco == nullptr) {
-        cabezaOrco = nuevoOrco; // Si la lista está vacía, el nuevo orco será el primero
+        cabezaOrco = nuevoOrco; // Si la lista esta vacia, el nuevo orco sera el primero
     } else {
         Especie_Orco* actualOrco = cabezaOrco;
         while (actualOrco->siguiente != nullptr) {
@@ -245,7 +256,7 @@ void crearOrco(Especie_Orco*&cabezaOrco, const string& nombre_especieOrco, int d
         }
         actualOrco->siguiente = nuevoOrco; // Agrega el nuevo orco al final de la lista
     }
-    std::cout << "Orco '" << nombre_especieOrco << "' agregado exitosamente!\n"<<endl;
+    std::cout << "Orco '" << nombre_especieOrco << "' agregado exitosamente!\n";
 }
 
 Especie_Heroe *crearEspecie_Heroe(string nombre, int fortaleza_base, int salud_base, int rapidez_base) {
@@ -261,24 +272,24 @@ Especie_Heroe *crearEspecie_Heroe(string nombre, int fortaleza_base, int salud_b
 Heroe *crearHeroe(Especie_Heroe *especie_seleccionada, string nombre) {       
     Heroe *nuevo = new Heroe;
     nuevo->nombre = nombre;
-    nuevo->especie = especie_seleccionada;   // La dirección a apuntar será de la especie asignada por usuario
+    nuevo->especie = especie_seleccionada;   // La direccion a apuntar sera de la especie asignada por usuario
     //nuevo->mochila = nullptr;
     nuevo->siguiente = nullptr;
     return nuevo; 
 }
 
-// Función crear sala 
+// Funcion crear sala 
 Sala *crearSala(string nombre, int id_sala) {
     Sala *nuevo = new Sala;
     nuevo->nombre = nombre;
     nuevo->id_sala = id_sala;
-    //nuevo->cantidad_orcos_en_sala = cantidad_orcos_en_sala;              // Dato para sección JUGAR.
+    //nuevo->cantidad_orcos_en_sala = cantidad_orcos_en_sala;              // Dato para seccion JUGAR.
     nuevo->siguiente = nullptr;
-    //nuevo->adyacencias = nullptr;                                        // Dato para sección JUGAR.
+    //nuevo->adyacencias = nullptr;                                        // Dato para seccion JUGAR.
     return nuevo;
 }
 
-// Función para crear un nuevo nodo (arma)
+// Funcion para crear un nuevo nodo (arma)
 Arma *crearArma(string nombre, int durabilidad_base, int dano_base, int fortaleza_requerida) { // Pasa el &de la especie selcc
     Arma *nuevo = new Arma;
     nuevo->nombre = nombre;
@@ -289,7 +300,7 @@ Arma *crearArma(string nombre, int durabilidad_base, int dano_base, int fortalez
     return nuevo;
 }
 
-// Función para crear un nuevo nodo (cura)
+// Funcion para crear un nuevo nodo (cura)
 Cura *crearCura(string nombre, int uso_maximo, int suma_salud) { 
     Cura *nuevo = new Cura;
     nuevo->nombre = nombre;
@@ -300,7 +311,7 @@ Cura *crearCura(string nombre, int uso_maximo, int suma_salud) {
     return nuevo;
 }
 
-// Función para crear un nuevo nodo (defensa)
+// Funcion para crear un nuevo nodo (defensa)
 Defensa *crearDefensa(string nombre, int durabilidad_base, int valor_proteccion) { 
     Defensa *nuevo = new Defensa; 
     nuevo->nombre = nombre;
@@ -311,7 +322,7 @@ Defensa *crearDefensa(string nombre, int durabilidad_base, int valor_proteccion)
     return nuevo;
 }
 
-// Función para crear un nuevo nodo (poder magico)
+// Funcion para crear un nuevo nodo (poder magico)
 Poder_Magico *crearPoder_Magico(string nombre, int valor_modificacion, int campo_modificacion) { 
     Poder_Magico *nuevo = new Poder_Magico;
     nuevo->nombre = nombre;
@@ -338,7 +349,7 @@ Poder_Magico *crearPoder_Magico(string nombre, int valor_modificacion, int campo
 
 
 
-// FUNCIONES SECCIÓN HÉROES (ESPECIES Y PERSONAJES)
+// FUNCIONES SECCIoN HeROES (ESPECIES Y PERSONAJES)
 
 // Funciones para gestionar especies    
 
@@ -346,7 +357,7 @@ void inicializarListaEspecies(ListaEspecies* lista) {
     lista->cabeza = nullptr;
     lista->cantidadEspecies = 0;
 
-    // Añadir una especie predeterminada
+    // Anadir una especie predeterminada
     Especie_Heroe* nuevaEspecie = crearEspecie_Heroe("Elfo", 30, 200, 100);
     lista->cabeza = nuevaEspecie;
     lista->cantidadEspecies++;
@@ -354,17 +365,18 @@ void inicializarListaEspecies(ListaEspecies* lista) {
 
 
 void anadirNuevaEspecieDesdeUsuario(ListaEspecies* lista) {
-    cout << "\n--- Añadir Nueva Especie ---\n";
-    string nombre_especie = obtenerNombre("Ingrese el Nombre de la nueva Especie de Héroe (máximo 20 caracteres): ");
+    system("cls");
+    cout << "\n--- Anadir Nueva Especie ---\n";
+    string nombre_especie = obtenerNombre("Ingrese el Nombre de la nueva Especie de Heroe (maximo 20 caracteres): ");
 
     int fortaleza_base;
     cout << "\nIngrese valor de Fortaleza base\n";
-    cout << "(Debe ser un número entero entre 10 y 50, y múltiplo de 10. \n";
-    cout << "Valores admitidos: 10, 20, 30, 40, 50): \n" << endl;
+    cout << "(Debe ser un numero entero entre 10 y 50, y multiplo de 10. \n";
+    cout << "Valores admitidos: 10, 20, 30, 40, 50): " << endl;
     while (!(cin >> fortaleza_base) || fortaleza_base < 10 || fortaleza_base > 50 || fortaleza_base % 10 != 0) {
-        cout << "----------- ERROR -----------\n";
+        cout << "\n----------- ERROR -----------\n";
         cout << "El valor ingresado es: " << fortaleza_base << endl;   
-        cout << "Debe ser un número entre 10 y 50, y múltiplo de 10.\n";    
+        cout << "Debe ser un numero entre 10 y 50, y multiplo de 10.\n";    
         cout << "Intente nuevamente.\n" << endl;
         cin.clear();
         cin.ignore(10000, '\n');
@@ -374,12 +386,12 @@ void anadirNuevaEspecieDesdeUsuario(ListaEspecies* lista) {
 
     int salud_base;
     cout << "\nIngrese valor de Salud base\n";
-    cout << "(Debe ser un número entero entre 100 y 300, y múltiplo de 50. \n";
-    cout << "Valores admitidos: 100, 150, 200, 250, 300): \n" << endl;
+    cout << "(Debe ser un numero entero entre 100 y 300, y multiplo de 50. \n";
+    cout << "Valores admitidos: 100, 150, 200, 250, 300): " << endl;
     while (!(cin >> salud_base) || salud_base < 100 || salud_base > 300 || salud_base % 50 != 0) {
-        cout << "----------- ERROR -----------\n";
+        cout << "\n----------- ERROR -----------\n";
         cout << "El valor ingresado es: " << salud_base << endl;   
-        cout << "Debe ser un número entre 100 y 300, y múltiplo de 50.\n";    
+        cout << "Debe ser un numero entre 100 y 300, y multiplo de 50.\n";    
         cout << "Intente nuevamente.\n" << endl;
         cin.clear();
         cin.ignore(10000, '\n');
@@ -388,19 +400,19 @@ void anadirNuevaEspecieDesdeUsuario(ListaEspecies* lista) {
 
     int rapidez_base;
     cout << "\nIngrese valor de Rapidez base\n";
-    cout << "(Debe ser un número entero entre 50 y 200, y múltiplo de 50. \n";
-    cout << "Valores admitidos: 50, 100, 150, 200): \n" << endl;
+    cout << "(Debe ser un numero entero entre 50 y 200, y multiplo de 50. \n";
+    cout << "Valores admitidos: 50, 100, 150, 200): " << endl;
     while (!(cin >> rapidez_base) || rapidez_base < 50 || rapidez_base > 200 || rapidez_base % 50 != 0) {
-        cout << "----------- ERROR -----------\n";
+        cout << "\n----------- ERROR -----------\n";
         cout << "El valor ingresado es: " << rapidez_base << endl;   
-        cout << "Debe ser un número entre 50 y 200, y múltiplo de 50.\n";    
+        cout << "Debe ser un numero entre 50 y 200, y multiplo de 50.\n";    
         cout << "Intente nuevamente.\n" << endl;
         cin.clear();
         cin.ignore(10000, '\n');
     }
     cin.ignore();
 
-    // Crear la nueva especie utilizando la función crearEspecie_Heroe
+    // Crear la nueva especie utilizando la funcion crearEspecie_Heroe
     Especie_Heroe* nuevaEspecie = crearEspecie_Heroe(nombre_especie, fortaleza_base, salud_base, rapidez_base);
 
     // Agregar la nueva especie a la lista
@@ -417,15 +429,17 @@ void anadirNuevaEspecieDesdeUsuario(ListaEspecies* lista) {
     cout << "\nCreando datos...\n"<<endl;
     this_thread::sleep_for(chrono::seconds(3));
     cout << "Especie '" << nombre_especie << "' agregada exitosamente!\n";
+    pausa();
 }
 
 void mostrarEspecies(const ListaEspecies* lista) {
     if (lista->cabeza == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
-        std::cout << "\nNo hay especies de héroes disponibles.\n";
+        std::cout << "\n----- Lista vacia -----\n";
+        std::cout << "\nNo hay especies de heroes disponibles.\n";
+        pausa();
         return;
     }
-    cout << "\n--- Especies de Héroes Disponibles ---\n";
+    cout << "\n--- Especies de Heroes Disponibles ---\n";
     Especie_Heroe* actual = lista->cabeza;
     int i = 1;
 
@@ -437,19 +451,20 @@ void mostrarEspecies(const ListaEspecies* lista) {
         actual = actual->siguiente;
         i++;
     }
-    cout << "----------------------------\n";
+    cout << "---------------------------------------------\n";
 }
 void modificarEspecie(ListaEspecies* listaEspecies) {
     if (listaEspecies->cabeza == nullptr) {
-        cout << "\n----- Lista vacía -----\n";
-        cout << "\nNo hay Especies de héroes disponibles para modificar.\n";
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay Especies de heroes disponibles para modificar.\n";
+        pausa();
         return;
     }
 
     mostrarEspecies(listaEspecies);
 
     int seleccion;
-    cout << "Ingrese el número de la especie que desea modificar: ";
+    cout << "Ingrese el numero de la especie que desea modificar: ";
     cin >> seleccion;
     cin.ignore();
 
@@ -462,36 +477,40 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
 
     if (actual == nullptr) {
         std::cout << "----------- ERROR -----------";
-        std::cout << "\nSelección inválida.";
+        std::cout << "\nSeleccion invalida.";
         cout << "Intente nuevamente.\n."<<endl;
         return;
     }
 
     int opcion;
-    cout << "\n--- ¿Qué desea modificar de la especie '" << actual->nombre_especie << "'? ---\n";
+    system("cls");
+    cout << "\n--- Que desea modificar de la Especie '" << actual->nombre_especie << "'? ---\n";
     cout << "1. Nombre.\n";
     cout << "2. Fortaleza Base.\n";
     cout << "3. Salud Base.\n";
     cout << "4. Rapidez Base.\n"<< endl;
-    cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+    cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
     cin >> opcion;
     cin.ignore();
 
     switch (opcion) {
         case 1: {
-            string nuevoNombre = obtenerNombre("Ingrese el nuevo nombre de la Especie " + actual->nombre_especie + ", máximo 20 caracteres: ");
+            string nuevoNombre = obtenerNombre("\nIngrese el nuevo nombre de la Especie " + actual->nombre_especie + ", maximo 20 caracteres: ");
             actual->nombre_especie = nuevoNombre;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
             std::cout << "Nombre de Especie actualizado a '" << actual->nombre_especie << "' correctamente.\n";
+            pausa();
             break;
         }
         case 2: {
             int nuevaFortaleza;
-            std::cout << "Ingrese la nueva Fortaleza Base \n";
-            std::cout << "Debe ser un número entero entre 10 y 50, y múltiplo de 10: \n"<<endl;
+            std::cout << "\nIngrese la nueva Fortaleza Base \n";
+            std::cout << "Debe ser un numero entero entre 10 y 50, y multiplo de 10: "<<endl;
             while (!(cin >> nuevaFortaleza) || nuevaFortaleza < 10 || nuevaFortaleza > 50 || nuevaFortaleza % 10 != 0) {
-                cout << "|----------- ERROR -----------\n";
+                cout << "\n----------- ERROR -----------\n";
                 cout << "El valor ingresado es: " << nuevaFortaleza << endl;
-                cout << "Debe ser un número entre 10 y 50, y múltiplo de 10.\n";
+                cout << "Debe ser un numero entre 10 y 50, y multiplo de 10.\n";
                 cout << "Intente nuevamente.\n" << endl;
                 cin.clear();
                 cin.ignore(10000, '\n');
@@ -500,17 +519,17 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
             cout << "\nActualizando datos...\n"<<endl;
             this_thread::sleep_for(chrono::seconds(3));
             cout << "Fortaleza Base de " << actual->nombre_especie << " actualizado a " << actual->fortaleza_base << " correctamente.\n";
-        
+            pausa();
             break;
         }
         case 3: {
             int nuevaSalud;
-            std::cout << "Ingrese la nueva Salud Base \n";
-            std::cout << "Debe ser un número entero entre 100 y 300, y múltiplo de 50: \n"<<endl;
+            std::cout << "\nIngrese la nueva Salud Base \n";
+            std::cout << "Debe ser un numero entero entre 100 y 300, y multiplo de 50: "<<endl;
             while (!(cin >> nuevaSalud) || nuevaSalud < 100 || nuevaSalud > 300 || nuevaSalud % 50 != 0) {
-                cout << "|----------- ERROR -----------\n";
+                cout << "\n----------- ERROR -----------\n";
                 cout << "El valor ingresado es: " << nuevaSalud << endl;
-                cout << "Debe ser un número entre 100 y 300, y múltiplo de 50.\n";
+                cout << "Debe ser un numero entre 100 y 300, y multiplo de 50.\n";
                 cout << "Intente nuevamente.\n" << endl;
                 cin.clear();
                 cin.ignore(10000, '\n');
@@ -519,17 +538,17 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
             cout << "\nActualizando datos...\n"<<endl;
             this_thread::sleep_for(chrono::seconds(3));
             cout << "Salud Base de " << actual->nombre_especie << " actualizado a " << actual->salud_base << " correctamente.\n";
-        
+            pausa();
             break;
         }
         case 4: {
             int nuevaRapidez;
-            std::cout << "Ingrese la nueva Rapidez Base \n";
-            std::cout << "Debe ser un número entero entre 50 y 200, y múltiplo de 50: \n"<<endl;
+            std::cout << "\nIngrese la nueva Rapidez Base \n";
+            std::cout << "Debe ser un numero entero entre 50 y 200, y multiplo de 50: "<<endl;
             while (!(cin >> nuevaRapidez) || nuevaRapidez < 50 || nuevaRapidez > 200 || nuevaRapidez % 50 != 0) {
-                cout << "|----------- ERROR -----------\n";
+                cout << "\n----------- ERROR -----------\n";
                 cout << "El valor ingresado es: " << nuevaRapidez << endl;
-                cout << "Debe ser un número entre 50 y 200, y múltiplo de 50.\n";
+                cout << "Debe ser un numero entre 50 y 200, y multiplo de 50.\n";
                 cout << "Intente nuevamente.\n" << endl;
                 cin.clear();
                 cin.ignore(10000, '\n');
@@ -538,20 +557,24 @@ void modificarEspecie(ListaEspecies* listaEspecies) {
             cout << "\nActualizando datos...\n"<<endl;
             this_thread::sleep_for(chrono::seconds(3));
             cout << "Rapidez Base de " << actual->nombre_especie << " actualizado a " << actual->rapidez_base << " correctamente.\n";
-        
+            pausa();
             break;
         }
         default:
-            cout << "Opción inválida.\n";
+            cout << "\nOpcion invalida.\n";
+            pausa();
             return;
     }
-
-    cout << "Especie '" << actual->nombre_especie << "' modificada exitosamente!\n"<<endl;
+    cout << "\n"<<endl;
+    cout << "\nEspecie '" << actual->nombre_especie << "' modificada exitosamente!\n"<<endl;
+    pausa();
 }
-void eliminarEspecie(ListaEspecies* listaEspecies) {
+
+void eliminarEspecie(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     if (listaEspecies->cantidadEspecies == 0) {
-        cout << "\n----- Lista vacía -----\n";
-        cout << "\nNo hay Especies de Héroes disponibles para eliminar.\n";
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay Especies de Heroes disponibles para eliminar.\n";
+        pausa();
         return;
     }
 
@@ -559,12 +582,12 @@ void eliminarEspecie(ListaEspecies* listaEspecies) {
     mostrarEspecies(listaEspecies);
 
     int seleccion;
-    cout << "Ingrese el número de la Especie que desea eliminar (1-" << listaEspecies->cantidadEspecies << "): ";
+    cout << "Ingrese el numero de la Especie que desea eliminar (1-" << listaEspecies->cantidadEspecies << "): ";
     while (!(cin >> seleccion) || seleccion < 1 || seleccion > listaEspecies->cantidadEspecies) {
-        cout << "----------- ERROR -----------";
-        cout << "\nEl número ingresado es:" << seleccion << endl;
-        cout << "Entrada inválida: Debe ser un número entero entre 1 y " << listaEspecies->cantidadEspecies << ": ";
-        cout << "Intente nuevamente.\n."<<endl;
+        cout << "\n----------- ERROR -----------";
+        cout << "\nEl numero ingresado es:" << seleccion << endl;
+        cout << "Entrada invalida: Debe ser un numero entero entre 1 y " << listaEspecies->cantidadEspecies << ": ";
+        cout << "Intente nuevamente.\n"<<endl;
         cin.clear();
         cin.ignore(10000, '\n');
     }
@@ -583,9 +606,28 @@ void eliminarEspecie(ListaEspecies* listaEspecies) {
 
     if (actual == nullptr) {
         cout << "----------- ERROR -----------\n";
-        cout << "Seleccion inválida.\n";
+        cout << "Seleccion invalida.\n";
         cout << "Intente nuevamente.\n"<<endl;
         return;
+    }
+
+    /*// Buscar la especie seleccionada
+    Especie_Heroe* especieSeleccionada = listaEspecies->cabeza;
+    for (int i = 1; i < especieIndice; ++i) {
+        especieSeleccionada = especieSeleccionada->siguiente;
+    }*/
+
+    // Buscar Héroe con esa especie
+    Heroe* actualx = listaHeroes->cabeza;
+    int indicex = 1;
+
+    while (actualx != nullptr && indicex < listaHeroes->cantidad) {
+        if ((actualx->especie->nombre_especie)==(actual->nombre_especie)){
+            actualx->especie = nullptr;
+        }
+        actualx = actualx->siguiente; // Mover al siguiente héroe
+        indicex++; 
+
     }
 
     // Eliminar la especie seleccionada
@@ -601,7 +643,8 @@ void eliminarEspecie(ListaEspecies* listaEspecies) {
     listaEspecies->cantidadEspecies--;
     cout << "\nEliminando datos...\n"<<endl;
     this_thread::sleep_for(chrono::seconds(3));
-    cout << "Especie de héroe eliminada exitosamente!\n"<<endl;
+    cout << "Especie de heroe eliminada exitosamente!\n"<<endl;
+    pausa();
 }
 
 void limpiarEspecies(ListaEspecies* listaEspecies) {
@@ -611,40 +654,43 @@ void limpiarEspecies(ListaEspecies* listaEspecies) {
         delete actual; // Liberar la memoria del nodo actual
         actual = siguiente;
     }
-    listaEspecies->cabeza = nullptr; // Asegurarse de que la lista esté vacía
+    listaEspecies->cabeza = nullptr; // Asegurarse de que la lista este vacia
     listaEspecies->cantidadEspecies = 0; // Reiniciar el contador de especies
-    cout << "La memoria de Especies de Héroes fue eliminada correctamente.\n";
+    cout << "La memoria de Especies de Heroes fue eliminada correctamente.\n";
 }
 
 
 
-// Funciones Héroes PERSONAJES
+// Funciones Heroes PERSONAJES
 void inicializarListaHeroes(ListaHeroes* lista, ListaEspecies* listaEspecies) {
-    lista->cabeza = nullptr; // Inicializar la lista de héroes como vacía
-    lista->cantidad = 0;     // Inicializar el contador de héroes en 0
+    lista->cabeza = nullptr; // Inicializar la lista de heroes como vacia
+    lista->cantidad = 0;     // Inicializar el contador de heroes en 0
     lista->listaEspeciesGlobal = listaEspecies; // Asignar la lista de especies global
 }
 
 void anadirPersonaje(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     if (listaEspecies->cantidadEspecies == 0) {
-        cout << "\n----- Lista vacía -----\n";
+        cout << "\n----- Lista vacia -----\n";
         cout << "\nNo hay especies disponibles.\n";
+        pausa();
         return;
     }
 
-    cout << "\n--- Añadir Nuevo Héroe ---\n";
-    string nombre = obtenerNombre("Ingrese el nombre del nuevo Héroe (máximo 20 caracteres): ");
+    system("cls");
+    cout << "\n--- Anadir Nuevo Heroe ---\n";
+    string nombre = obtenerNombre("Ingrese el nombre del nuevo Heroe (maximo 20 caracteres): ");
 
     // Mostrar las especies disponibles
+    cout << "\n";
     mostrarEspecies(listaEspecies);
 
     // Solicitar al usuario que seleccione una especie
     int especieIndice;
-    cout << "Seleccione el número de la especie que desea asignar al nuevo Héroe: ";
+    cout << "Seleccione el numero de la especie que desea asignar al nuevo Heroe: ";
     while (!(cin >> especieIndice) || especieIndice < 1 || especieIndice > listaEspecies->cantidadEspecies) {
-        cout << "----------- ERROR -----------";
-        cout << "\nEl número ingresado es:" << especieIndice;
-        cout << "\nSelección inválida: Ese numero de Especie no existe en la lista\n.";
+        cout << "\n----------- ERROR -----------";
+        cout << "\nEl numero ingresado es: " << especieIndice;
+        cout << "\nSeleccion invalida: Ese numero de Especie no existe en la lista\n";
         cout << "Intente nuevamente.\n"<<endl;
         cin.clear();
         cin.ignore(10000, '\n');
@@ -657,11 +703,11 @@ void anadirPersonaje(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
         especieSeleccionada = especieSeleccionada->siguiente;
     }
 
-    // Crear el nuevo héroe utilizando la función crearHeroe
+    // Crear el nuevo heroe utilizando la funcion crearHeroe
     Heroe* nuevoHeroe = crearHeroe(especieSeleccionada, nombre);
 
     
-    // Agregar el héroe a la lista de héroes
+    // Agregar el heroe a la lista de heroes
     if (listaHeroes->cabeza == nullptr) {
         listaHeroes->cabeza = nuevoHeroe;
     } else {
@@ -674,25 +720,27 @@ void anadirPersonaje(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     listaHeroes->cantidad++;
     cout << "\nCreando datos...\n"<<endl;
     this_thread::sleep_for(chrono::seconds(3));
-    cout << "Héroe '" << nombre << "' agregado exitosamente!\n";
+    cout << "Heroe '" << nombre << "' agregado exitosamente!\n";
+    pausa();
 }
 
 void mostrarHeroes(const ListaHeroes* lista) {
     if (lista->cantidad == 0) {
-        cout << "\n----- Lista vacía -----\n";
-        cout << "\nNo hay héroes en la lista.\n";
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay heroes en la lista.\n";
+        pausa();
         return;
     }
 
-    cout << "\nLista de héroes (" << lista->cantidad << "):\n";
+    cout << "\nLista de heroes (" << lista->cantidad << "):\n";
     Heroe* actual = lista->cabeza;
     int i = 1;
 
     while (actual != nullptr) {
-        cout << "\nHéroe #" << i++ << ":\n";
-        cout << "   Nombre: " << actual->nombre << "|";
+        cout << "\nHeroe #" << i++ << ":\n";
+        cout << "   Nombre: " << actual->nombre << " | ";
         if (actual->especie != nullptr) {
-            cout << "   Especie: " << actual->especie->nombre_especie << endl;
+            cout << "Especie: " << actual->especie->nombre_especie << endl;
             cout << "   Fortaleza: " << actual->especie->fortaleza_base
                 << " | Salud: " << actual->especie->salud_base
                 << " | Rapidez: " << actual->especie->rapidez_base << "\n"<<endl;
@@ -705,23 +753,23 @@ void mostrarHeroes(const ListaHeroes* lista) {
 
 void modificarHeroe(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     if (listaHeroes->cantidad == 0) {
-        cout << "\n----- Lista vacía -----\n";
-        cout << "\nNo hay Héroes disponibles para modificar.\n";
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay Heroes disponibles para modificar.\n";
+        pausa();
         return;
     }
 
-    cout << "\n--- Modificar Héroe ---\n";
     mostrarHeroes(listaHeroes);
 
     int indice;
-    cout << "Ingrese el número del héroe que desea modificar: ";
+    cout << "Ingrese el numero del heroe que desea modificar: ";
     cin >> indice;
     cin.ignore();
 
     if (indice < 1 || indice > listaHeroes->cantidad) {
         cout << "----------- ERROR -----------\n";
-        cout << "El número ingresado es:" << indice << endl;
-        cout << "\nSelección inválida: Ese numero de Héroe no existe en la lista.\n";
+        cout << "El numero ingresado es:" << indice << endl;
+        cout << "\nSeleccion invalida: Ese numero de Heroe no existe en la lista.\n";
         cout << "Intente nuevamente.\n"<<endl;
         return;
     }
@@ -731,34 +779,36 @@ void modificarHeroe(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
         actual = actual->siguiente;
     }
 
-    cout << "\n--- ¿Qué desea modificar en el Héroe '" << actual->nombre << "'? ---\n";
+    system("cls");
+    cout << "\n--- Que desea modificar del Heroe '" << actual->nombre << "'? ---\n";
     cout << "1. Nombre.\n";
     cout << "2. Especie.\n"<<endl;
-    cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+    cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: "<<endl;
     int opcion;
     cin >> opcion;
     cin.ignore();
 
     switch (opcion) {
         case 1: {
-            string nuevoNombre = obtenerNombre("Ingrese el nuevo nombre del Héroe " + actual->nombre + ", máximo 20 caracteres: ");
+            string nuevoNombre = obtenerNombre("\nIngrese el nuevo nombre del Heroe " + actual->nombre + ", maximo 20 caracteres: ");
             actual->nombre = nuevoNombre;
             cout << "\nActualizando datos...\n"<<endl;
             this_thread::sleep_for(chrono::seconds(3));
-            std::cout << "Nombre de Héroe actualizado a '" << actual->nombre << "' correctamente.\n";
+            std::cout << "Nombre de Heroe actualizado a '" << actual->nombre << "' correctamente.\n";
+            pausa();
             break;
         }
         case 2: {
             mostrarEspecies(listaEspecies);
             int especieIndice;
-            cout << "Ingrese el número correspondiente a la nueva Especie: ";
+            cout << "Ingrese el numero correspondiente a la nueva Especie: ";
             cin >> especieIndice;
             cin.ignore();
 
             if (especieIndice < 1 || especieIndice > listaEspecies->cantidadEspecies) {
                 cout << "----------- ERROR -----------\n";
-                cout << "El número ingresado es:" << especieIndice;
-                cout << "\nSelección inválida: Ese numero de Especie no existe en la lista.\n";
+                cout << "El numero ingresado es:" << especieIndice;
+                cout << "\nSeleccion invalida: Ese numero de Especie no existe en la lista.\n";
                 cout << "Intente nuevamente.\n"<<endl;
                 return;
             }
@@ -771,37 +821,40 @@ void modificarHeroe(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
             actual->especie = especieActual;
             cout << "\nActualizando datos...\n"<<endl;
             this_thread::sleep_for(chrono::seconds(3));
-            cout << "Especie del Héroe " << actual->nombre << " actualizado a " << actual->especie->nombre_especie << " correctamente.\n";
-        
+            cout << "Especie del Heroe " << actual->nombre << " actualizado a " << actual->especie->nombre_especie << " correctamente.\n";
+            pausa();
             break;
         }
         default:
-            cout << "Opción inválida. Operación cancelada.\n";
+            cout << "\nOpcion invalida. Operacion cancelada.\n";
+            pausa();
     }
 
-    cout << "Héroe '" << actual->nombre << "' modificado exitosamente!\n"<<endl;
+    cout << "\nHeroe '" << actual->nombre << "' modificado exitosamente!\n";
+    pausa();
 }
 
 void eliminarHeroe(ListaHeroes* listaHeroes) {
     if (listaHeroes->cantidad == 0) {
-        cout << "\n----- Lista vacía -----\n";
-        cout << "\nNo hay Héroes disponibles para eliminar.\n";
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay Heroes disponibles para eliminar.\n";
+        pausa();
         return;
     }
 
-    cout << "\n--- Eliminar Héroe ---\n";
     mostrarHeroes(listaHeroes);
 
     int indice;
-    cout << "Ingrese el número del Héroe que desea eliminar (1-" << listaHeroes->cantidad << "): ";
+    cout << "Ingrese el numero del Heroe que desea eliminar (1-" << listaHeroes->cantidad << "): ";
     cin >> indice;
     cin.ignore();
 
     if (indice < 1 || indice > listaHeroes->cantidad) {
         cout << "----------- ERROR -----------\n";
-        cout << "\nEl número ingresado es:" << indice;
-        cout << "Entrada inválida: Debe ser un número entero entre 1 y " << listaHeroes->cantidad << ": \n";
-        cout << "Intente nuevamente.\n"<<endl;
+        cout << "\nEl numero ingresado es:" << indice;
+        cout << "Entrada invalida: Debe ser un numero entero entre 1 y " << listaHeroes->cantidad << ": \n";
+        cout << "Cancelando operacion...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
         return;
     }
 
@@ -814,10 +867,10 @@ void eliminarHeroe(ListaHeroes* listaHeroes) {
     }
 
     if (anterior == nullptr) {
-        // Eliminar el primer héroe
+        // Eliminar el primer heroe
         listaHeroes->cabeza = actual->siguiente;
     } else {
-        // Eliminar un héroe intermedio o final
+        // Eliminar un heroe intermedio o final
         anterior->siguiente = actual->siguiente;
     }
 
@@ -825,7 +878,8 @@ void eliminarHeroe(ListaHeroes* listaHeroes) {
     listaHeroes->cantidad--;
     cout << "\nEliminando datos...\n"<<endl;
     this_thread::sleep_for(chrono::seconds(3));
-    cout << "Héroe eliminado exitosamente!\n";
+    cout << "Heroe eliminado exitosamente!\n";
+    pausa();
 };
 
 void limpiarHeroes(ListaHeroes* listaHeroes) {
@@ -835,25 +889,28 @@ void limpiarHeroes(ListaHeroes* listaHeroes) {
         delete actual; // Liberar la memoria del nodo actual
         actual = siguiente;
     }
-    listaHeroes->cabeza = nullptr; // Asegurarse de que la lista esté vacía
-    listaHeroes->cantidad = 0; // Reiniciar el contador de héroes
-    cout << "Todos los héroes han sido eliminados.\n";
+    listaHeroes->cabeza = nullptr; // Asegurarse de que la lista este vacia
+    listaHeroes->cantidad = 0; // Reiniciar el contador de heroes
+    cout << "La memoria de Heroes fue eliminada correctamente.\n";
 }
 
 
-// Menús de héroe
-void gestionarEspecies(ListaEspecies* listaEspecies) {
+// Menus de heroe
+void gestionarEspecies(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     int opcion;
     do {
-        cout << "\n--- GESTIÓN DE ESPECIES ---\n";
-        cout << "1. Añadir Nueva Especie.\n";
+        system("cls");
+        cout << "\n--- GESTION DE ESPECIES ---\n";
+        cout << "1. Anadir Nueva Especie.\n";
         cout << "2. Ver Especies Disponibles.\n";
         cout << "3. Modificar Especie.\n";
         cout << "4. Eliminar Especie\n";
-        cout << "3. Volver al Menú Anterior.\n"<<endl;
-        cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        cout << "5. Volver al Menu Anterior.\n"<<endl;
+        cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         cin >> opcion;
-        cin.ignore();
+        
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcion) {
             case 1:
@@ -861,20 +918,22 @@ void gestionarEspecies(ListaEspecies* listaEspecies) {
                 break;
             case 2:
                 mostrarEspecies(listaEspecies);
+                pausa();
                 break;
             case 3:
                 modificarEspecie(listaEspecies);
                 break;
             case 4:
-                eliminarEspecie(listaEspecies);
+                eliminarEspecie(listaHeroes, listaEspecies);
                 break;
             case 5:
-                cout << "Volviendo al menú principal...\n";
+                cout << "\nVolviendo al menu anterior...\n";
                 this_thread::sleep_for(chrono::seconds(3));
                 system("cls");
                 break;
             default:
-                cout << "Opción inválida. Intente de nuevo.\n";
+                cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcion != 5);
 }
@@ -882,15 +941,18 @@ void gestionarEspecies(ListaEspecies* listaEspecies) {
 void gestionarPersonajes(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies) {
     int opcion;
     do {
-        cout << "\n--- GESTIÓN DE PERSONAJES ---\n";
+        system("cls");
+        cout << "\n--- GESTION DE PERSONAJES ---\n";
         cout << "1. Agregar Heroe.\n";
-        cout << "2. Ver Héroes Disponibles.\n";
-        cout << "3. Modificar Héroe.\n";
-        cout << "4. Eliminar Héroe.\n";
-        cout << "5. Volver al menú Anterior.\n";
-        cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        cout << "2. Ver Heroes Disponibles.\n";
+        cout << "3. Modificar Heroe.\n";
+        cout << "4. Eliminar Heroe.\n";
+        cout << "5. Volver al menu Anterior.\n";
+        cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         cin >> opcion;
-        cin.ignore();
+        
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcion) {
             case 1:
@@ -898,6 +960,7 @@ void gestionarPersonajes(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies)
                 break;
             case 2:
                 mostrarHeroes(listaHeroes);
+                pausa();
                 break;
             case 3:
                 modificarHeroe(listaHeroes, listaEspecies);
@@ -906,17 +969,16 @@ void gestionarPersonajes(ListaHeroes* listaHeroes, ListaEspecies* listaEspecies)
                 eliminarHeroe(listaHeroes);
                 break;
             case 5:
-                cout << "Volviendo al menú principal...\n";
+                cout << "\nVolviendo al menu anterior...\n";
                 this_thread::sleep_for(chrono::seconds(3));
                 system("cls");
                 break;
             default:
-                cout << "Opción inválida. Intente de nuevo.\n";
+                cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcion != 5);
 }
-
-
 
 
 
@@ -966,10 +1028,10 @@ public:
         }
         cabeza = nullptr;
         cantidadArma = 0; 
-        std::cout << "Memoria de Armas liberada correctamente.\n";  
+        std::cout << "La memoria de Armas fue eliminada correctamente.\n";  
     }
 
-    // Función para agregar nodo a la lista
+    // Funcion para agregar nodo a la lista
     void agregarArma(Arma* nuevaArma) {
         if (cabeza == nullptr) {
             cabeza = nuevaArma;
@@ -986,8 +1048,9 @@ public:
     // Mostrar la lista de Armas
     void mostrarArma() const {
         if (cabeza == nullptr) {
-            std::cout << "\n----- Lista vacía -----\n";
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay Armas disponibles.\n";
+            pausa();
             return;
         }
         std::cout << "\n----- Armas Disponibles -----\n" << endl;
@@ -997,8 +1060,8 @@ public:
         while (actual != nullptr) {
             std::cout << i << ". " << actual->nombre << endl;                    
             std::cout << "   Durabilidad en usos: " << actual->durabilidad_base
-                 << " | Daño base: " << actual->dano_base
-                 << " |  Fortaleza mínima requerida del héroe para utilizarla: " << actual->fortaleza_requerida << "\n" << endl;
+                 << " | Dano base: " << actual->dano_base
+                 << " |  Fortaleza minima requerida del heroe para utilizarla: " << actual->fortaleza_requerida << "\n" << endl;
             actual = actual->siguiente;
             i++;
         }
@@ -1006,10 +1069,10 @@ public:
     }
 
 
-    // Obtener una arma por índice 
+    // Obtener una arma por indice 
     Arma *obtenerArmaPorIndice(int index) const {
         if (index < 0 || index >= cantidadArma) {
-            return nullptr;                                           // Índice inválido
+            return nullptr;                                           // indice invalido
         }
         Arma *actual = cabeza;
         for (int i = 0; i < index; ++i) {
@@ -1018,7 +1081,7 @@ public:
         return actual;
     }
 
-    // Obtener una especie por nombre (útil para personajes predeterminados)
+    // Obtener una especie por nombre (util para personajes predeterminados)
     Arma *obtenerArmaPorNombre(const string& nombreBuscado) const {
         Arma* actual = cabeza;
         while (actual != nullptr) {
@@ -1032,18 +1095,19 @@ public:
     
 
 
-    // Función para añadir una nueva ARMA por parte del usuario
+    // Funcion para anadir una nueva ARMA por parte del usuario
     void anadirArma() {
+        system("cls");
         std::cout << "\n----- Crear Nueva Arma -----\n";
-        string nombre = validarLongitudString("Ingrese el Nombre de la nueva Arma (máximo 20 caracteres): ", 20);
+        string nombre = validarLongitudString("Ingrese el Nombre de la nueva Arma (maximo 20 caracteres): ", 20);
 
         int durabilidad_base;
         std::cout << "\nIngrese valor de Durabilidad base (Cantidad de usos permitidos)\n";
-        std::cout << "(Debe ser un número entero entre 1 y 40): \n"<< endl;
+        std::cout << "(Debe ser un numero entero entre 1 y 40): "<< endl;
         while (!(std::cin >> durabilidad_base) || durabilidad_base < 1 || durabilidad_base > 40) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << durabilidad_base << endl;   
-            std::cout << "Debe ser un número entre 1 y 40.\n";    
+            std::cout << "Debe ser un numero entre 1 y 40.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
         
             std::cin.clear();
@@ -1052,12 +1116,12 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         int dano_base;
-        std::cout << "\nIngrese valor de Daño base\n";
-        std::cout << "(Debe ser un número entero entre 20 y 150, y múltiplo de 10. \n"<< endl;
+        std::cout << "\nIngrese valor de Dano base\n";
+        std::cout << "Debe ser un numero entero entre 20 y 150, y multiplo de 10: ";
         while (!(std::cin >> dano_base) || dano_base < 20 || dano_base > 150 || dano_base % 10 != 0) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << dano_base << endl;   
-            std::cout << "Debe ser un número entre 20 y 150, y múltiplo de 10.\n";    
+            std::cout << "Debe ser un numero entre 20 y 150, y multiplo de 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
         
             std::cin.clear();
@@ -1066,13 +1130,13 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         int fortaleza_requerida;
-        std::cout << "\nIngrese valor de Fortaleza mínima que requiere el héroe para utilizarla\n";
-        std::cout << "(Debe ser un número entero entre 10 y 50, y múltiplo de 10. \n";
-        std::cout << "Valores admitidos: 10, 20, 30, 40, 50): \n" << endl;
+        std::cout << "\nIngrese valor de Fortaleza minima que requiere el heroe para utilizarla\n";
+        std::cout << "(Debe ser un numero entero entre 10 y 50, y multiplo de 10. \n";
+        std::cout << "Valores admitidos: 10, 20, 30, 40, 50): ";
         while (!(std::cin >> fortaleza_requerida) || fortaleza_requerida < 10 || fortaleza_requerida > 50 || fortaleza_requerida % 10 != 0) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << fortaleza_requerida << endl;   
-            std::cout << "Debe ser un número entre 10 y 50, y múltiplo de 10.\n";    
+            std::cout << "Debe ser un numero entre 10 y 50, y multiplo de 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
             std::cin.clear();
             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -1080,25 +1144,30 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         agregarArma(crearArma(nombre, durabilidad_base, dano_base, fortaleza_requerida));
+        cout << "\nCreando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
         std::cout << "Arma '" << nombre << "' agregada exitosamente!\n";
+        pausa();
+        
     }
 
-    // Función para modificar un ARMA existente
+    // Funcion para modificar un ARMA existente
     void modificarArma() {
-        if (cabeza == nullptr) { // Revisa si la lista está vacia
-            std::cout << "\n----- Lista vacía -----\n";
+        if (cabeza == nullptr) { // Revisa si la lista esta vacia
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay Armas disponibles para modificar.\n"; 
+            pausa();
             return;
         }
 
         mostrarArma();
-        std::cout << "\nIngrese el número del Arma a modificar (1-" << obtenerCantidadArma() << "): ";
+        std::cout << "\nIngrese el numero del Arma a modificar (1-" << obtenerCantidadArma() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadArma()) {
-            std::cout << "Número de Arma inválido.\n";
+            std::cout << "Numero de Arma invalido.\n";
             return;
         }
 
@@ -1108,96 +1177,114 @@ public:
 
         int opcionModificar;
         do {
-            std::cout << "\n--- ¿Qué desea modificar del implemento '" << armaAModificar->nombre << "'? ---\n";
+            system("cls");
+            std::cout << "\n--- Que desea modificar del Implemento '" << armaAModificar->nombre << "'? ---\n";
             std::cout << "1. Nombre.\n";
             std::cout << "2. Durabilidad base (Cantidad de usos permitidos).\n";
-            std::cout << "3. Daño base.\n";
-            std::cout << "4. Fortaleza mínima que requiere el héroe para utilizarla.\n";
-            std::cout << "5. Finalizar modificación.\n"<<endl;
-            std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+            std::cout << "3. Dano base.\n";
+            std::cout << "4. Fortaleza minima que requiere el heroe para utilizarla.\n";
+            std::cout << "5. Finalizar modificacion.\n"<<endl;
+            std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
             std::cin >> opcionModificar;
-            std::cin.ignore();
+            cin.clear();
+            (cin.ignore(1000,'\n'));
 
             switch (opcionModificar) {
                 case 1: {
-                    string nuevoNombreArma = validarLongitudString("Ingrese el nuevo nombre para el Arma " + armaAModificar->nombre + ", máximo 20 caracteres: ", 20);
+                    string nuevoNombreArma = validarLongitudString("Ingrese el nuevo nombre para el Arma " + armaAModificar->nombre + ", maximo 20 caracteres: ", 20);
                     armaAModificar->nombre = nuevoNombreArma;
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
                     std::cout << "Nombre de Arma actualizado a '" << armaAModificar->nombre << "' correctamente.\n";
+                    pausa();
                     break;
                 }
 
                 case 2: 
                     int nuevadurabilidad_base;
                     std::cout << "Ingrese la nueva Durabilidad base \n";
-                    std::cout << "Debe ser un número entero entre 1 y 40: \n"<<endl;
+                    std::cout << "Debe ser un numero entero entre 1 y 40: ";
                     while (!(std::cin >> nuevadurabilidad_base) || nuevadurabilidad_base < 1 || nuevadurabilidad_base > 40) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 1 y 40";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 1 y 40";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     armaAModificar->durabilidad_base = nuevadurabilidad_base;
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
                     std::cout << "Durabilidad base de " << armaAModificar->nombre << " actualizada a " << armaAModificar->durabilidad_base << " correctamente.\n";
+                    pausa();
                     break;
                 
                 case 3: 
                     int nuevodano_base;
-                    std::cout << "Ingrese el nuevo Daño base \n";
-                    std::cout << "Debe ser un número entre 20 y 150, y múltiplo de 10: \n"<<endl;
+                    std::cout << "Ingrese el nuevo Dano base \n";
+                    std::cout << "Debe ser un numero entre 20 y 150, y multiplo de 10: ";
                     while (!(std::cin >> nuevodano_base) || nuevodano_base < 20 || nuevodano_base > 150 || nuevodano_base % 10 != 0) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 20 y 150, y múltiplo de 10: ";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 20 y 150, y multiplo de 10: ";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     armaAModificar->dano_base = nuevodano_base;
-                    std::cout << "Daño base de " << armaAModificar->nombre << " actualizado a " << armaAModificar->dano_base << " correctamente.\n";
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
+                    std::cout << "Dano base de " << armaAModificar->nombre << " actualizado a " << armaAModificar->dano_base << " correctamente.\n";
+                    pausa();
                     break;
                 
                 case 4: 
                     int nuevafortaleza_requerida;
-                    std::cout << "Ingrese la nueva Fortaleza requerida (" << armaAModificar->fortaleza_requerida << " - debe ser un número entre 10 y 50, y múltiplo de 10): ";
+                    std::cout << "Ingrese la nueva Fortaleza requerida (" << armaAModificar->fortaleza_requerida << " - debe ser un numero entre 10 y 50, y multiplo de 10): ";
                     while (!(std::cin >> nuevafortaleza_requerida) || nuevafortaleza_requerida < 10 || nuevafortaleza_requerida > 50 || nuevafortaleza_requerida % 10 != 0) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 10 y 50, y múltiplo de 10: ";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 10 y 50, y multiplo de 10: ";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     armaAModificar->fortaleza_requerida = nuevafortaleza_requerida;
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
                     std::cout << "Fortaleza requerida de " << armaAModificar->nombre << " actualizada a " << armaAModificar->fortaleza_requerida << " correctamente.\n";
+                    pausa();
                     break;
                 
                 case 5: 
                     std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                    std::cout << "Regresando al menú anterior...\n";
+                    std::cout << "Regresando al menu anterior...\n";
+                    this_thread::sleep_for(chrono::seconds(3));
                     break;
                 
                 default: 
-                    std::cout << "Opción inválida. Intente de nuevo.\n";
+                    std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                    pausa();
                 
             }
         } while (opcionModificar != 5);
 
-        std::cout << "El Arma '" << armaAModificar->nombre << "' fue modificada exitosamente!\n"<<endl;
+        std::cout << "\nEl Arma '" << armaAModificar->nombre << "' fue modificada exitosamente!\n";
+        pausa();
     }
 
 
 // Eliminar (Quitar un arma de la lista)
     void eliminarArma() {
         if (obtenerCantidadArma() == 0) {
-            std::cout << "\n----- Lista vacía -----\n";
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay armas disponibles para eliminar.\n";
+            pausa();
             return;
         }
 
         mostrarArma();
-        std::cout << "\nIngrese el número del Arma a eliminar (1-" << obtenerCantidadArma() << "): ";  //REVISAR
+        std::cout << "\nIngrese el numero del Arma a eliminar (1-" << obtenerCantidadArma() << "): ";  
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadArma()) {
-            std::cout << "Posición inválida.\n";
+            std::cout << "Posicion invalida.\n";
             return;
         }
 
@@ -1220,7 +1307,10 @@ public:
         }
 
         cantidadArma--;
+        cout << "\nEliminando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
         std::cout << "Arma eliminada exitosamente!\n";
+        pausa();
     }
 
     size_t obtenerCantidadArma() const {
@@ -1228,20 +1318,22 @@ public:
     }
 };
 
-// Función para el menú de gestión de Armas
+// Funcion para el menu de gestion de Armas
 void gestionarArma() {
     ListaArma ListaArma;
     int opcionArma;
     do {
-        std::cout << "\n--- GESTION DE ARMA ---\n";
-        std::cout << "1. Añadir Nueva Arma.\n";
+        system("cls");
+        std::cout << "\n--- GESTION DE ARMAS ---\n";
+        std::cout << "1. Anadir Nueva Arma.\n";
         std::cout << "2. Ver Armas Disponibles.\n";
         std::cout << "3. Modificar Arma Existente.\n";
         std::cout << "4. Eliminar Arma.\n";
-        std::cout << "5. Volver al menú anterior.\n"<<endl;
-        std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        std::cout << "5. Volver al menu anterior.\n"<<endl;
+        std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         std::cin >> opcionArma;
-        std::cin.ignore();
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionArma) {
             case 1:
@@ -1249,6 +1341,7 @@ void gestionarArma() {
                 break;
             case 2:
                 ListaArma.mostrarArma();
+                pausa();
                 break;
             case 3:
                 ListaArma.modificarArma();
@@ -1257,10 +1350,12 @@ void gestionarArma() {
                 ListaArma.eliminarArma();
                 break; 
             case 5:    
-                std::cout << "Volviendo al menú anterior...\n"; //return();
+                std::cout << "Volviendo al menu anterior...\n";
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionArma != 5);
 }
@@ -1317,10 +1412,10 @@ public:
         }
         cabeza = nullptr;
         cantidadDefensa = 0; 
-        std::cout << "Memoria de Lista de Defensa liberada correctamente.\n";
+        std::cout << "La memoria de Implementos de Defensa fue eliminada correctamente.\n";
     }
 
-    // Función para agregar una Defensa a la lista
+    // Funcion para agregar una Defensa a la lista
     void agregarDefensa(Defensa* nuevaDefensa) {
         if (cabeza == nullptr) {
             cabeza = nuevaDefensa;
@@ -1337,8 +1432,9 @@ public:
     // Mostrar la lista de Defensas
     void mostrarDefensa() const {
         if (cabeza == nullptr) {
-            std::cout << "\n----- Lista vacía -----\n";
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay implementos de Defensa disponibles.\n";
+            pausa();
             return;
         }
         std::cout << "\n----- Implementos de Defensa Disponibles -----\n" << endl;
@@ -1356,10 +1452,10 @@ public:
     }
 
 
-    // Obtener una Defensa por índice 
+    // Obtener una Defensa por indice 
     Defensa *obtenerDefensaPorIndice(int index) const {
         if (index < 0 || index >= cantidadDefensa) {
-            return nullptr;                                           // Índice inválido
+            return nullptr;                                           // indice invalido
         }
         Defensa *actual = cabeza;
         for (int i = 0; i < index; ++i) {
@@ -1368,7 +1464,7 @@ public:
         return actual;
     }
 
-    // Obtener una especie por nombre (útil para personajes predeterminados)
+    // Obtener una especie por nombre (util para personajes predeterminados)
     Defensa *obtenerDefensaPorNombre(const string& nombreBuscado) const {
         Defensa* actual = cabeza;
         while (actual != nullptr) {
@@ -1377,7 +1473,7 @@ public:
             }
             actual = actual->siguiente;
         }
-        return nullptr; // No se encontró la especie
+        return nullptr; // No se encontro la especie
     }
 
     size_t obtenerCantidadDefensa() const {
@@ -1385,18 +1481,19 @@ public:
     }
 
 
-    // Función para añadir una nueva Defensa por parte del usuario
+    // Funcion para anadir una nueva Defensa por parte del usuario
     void anadirDefensa() {
+        system("cls");
         std::cout << "\n----- Crear Nueva Defensa -----\n";
-        string nombre = validarLongitudString("Ingrese el Nombre de la nueva Defensa (máximo 20 caracteres): ", 20);
+        string nombre = validarLongitudString("Ingrese el Nombre de la nueva Defensa (maximo 20 caracteres): ", 20);
 
         int durabilidad_base;
         std::cout << "\nIngrese valor de Durabilidad base (Cantidad de usos permitidos)\n";
-        std::cout << "(Debe ser un número entero entre 1 y 40. \n";
+        std::cout << "Debe ser un numero entero entre 1 y 40: ";
         while (!(std::cin >> durabilidad_base) || durabilidad_base < 1 || durabilidad_base > 40) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << durabilidad_base << endl;   
-            std::cout << "Debe ser un número entre 1 y 40.\n";    
+            std::cout << "Debe ser un numero entre 1 y 40.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
         
             std::cin.clear();
@@ -1406,12 +1503,12 @@ public:
 
    
         int valor_proteccion;
-        std::cout << "\nIngrese valor de Protección que brinda al héroe\n";
-        std::cout << "(Debe ser un número entero entre 30 y 100, y múltiplo de 10): \n"<<endl;
+        std::cout << "\nIngrese valor de Proteccion que brinda al heroe\n";
+        std::cout << "(Debe ser un numero entero entre 30 y 100, y multiplo de 10): ";
         while (!(std::cin >> valor_proteccion) || valor_proteccion < 30 || valor_proteccion > 100 || valor_proteccion % 10 != 0) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << valor_proteccion << endl;   
-            std::cout << "Debe ser un número entre 30 y 100, y múltiplo de 10.\n";    
+            std::cout << "Debe ser un numero entre 30 y 100, y multiplo de 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
         
             std::cin.clear();
@@ -1420,26 +1517,30 @@ public:
         std::cin.ignore(); // Limpiar el buffer
     
         agregarDefensa(crearDefensa(nombre, durabilidad_base, valor_proteccion));
+        cout << "\nCreando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
         std::cout << "Implemento de Defensa '" << nombre << "' agregado exitosamente!\n";
+        pausa();
     }
 
 
-        // Nueva función para modificar una Defensa existente
+        // Nueva funcion para modificar una Defensa existente
     void modificarDefensa() {
-        if (cabeza == nullptr) { // Revisa si la lista está vacia
-            std::cout << "\n----- Lista vacía -----\n";
+        if (cabeza == nullptr) { // Revisa si la lista esta vacia
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay Implementos de Defensa disponibles.\n"; 
+            pausa();
             return;
         }
 
         mostrarDefensa();
-        std::cout << "\nIngrese el número de la Defensa a modificar (1-" << obtenerCantidadDefensa() << "): ";
+        std::cout << "\nIngrese el numero de la Defensa a modificar (1-" << obtenerCantidadDefensa() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadDefensa()) {
-            std::cout << "Número de Defensa inválido.\n";
+            std::cout << "Numero de Defensa invalido.\n";
             return;
 
 
@@ -1452,79 +1553,96 @@ public:
 
         int opcionModificar;
         do {
-            std::cout << "\n--- ¿Qué desea modificar del implemento '" << DefensaAModificar->nombre << "'? ---\n";
-            std::cout << "1. Nombre\n";
-            std::cout << "2. Durabilidad base (Durabilidad en usos)\n";
-            std::cout << "3. Valor de Protección\n";
-            std::cout << "4. Finalizar modificación\n"<<endl;
-            std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+            system("cls");
+            std::cout << "\n--- Que desea modificar del Implemento '" << DefensaAModificar->nombre << "'? ---\n";
+            std::cout << "1. Nombre.\n";
+            std::cout << "2. Durabilidad base (Durabilidad en usos).\n";
+            std::cout << "3. Valor de Proteccion.\n";
+            std::cout << "4. Finalizar modificacion.\n"<<endl;
+            std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
             std::cin >> opcionModificar;
-            std::cin.ignore();
+            
+            cin.clear();
+            (cin.ignore(1000,'\n'));
 
 
             switch (opcionModificar) {
                 case 1: {
-                    string nuevoNombreDefensa = validarLongitudString("Ingrese el nuevo nombre para la Defensa " + DefensaAModificar->nombre + ", máximo 20 caracteres: ", 20);
+                    string nuevoNombreDefensa = validarLongitudString("Ingrese el nuevo nombre para la Defensa " + DefensaAModificar->nombre + ", maximo 20 caracteres: ", 20);
                     DefensaAModificar->nombre = nuevoNombreDefensa;
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
                     std::cout << "Nombre de Defensa actualizado a '" << DefensaAModificar->nombre << "'.\n";
+                    pausa();
                     break;
                 }
                 case 2: {
                     int nuevadurabilidad_base;
                     std::cout << "Ingrese la nueva Durabilidad base: \n";
-                    std::cout << "Debe ser un número entero entre 1 y 40: \n"<<endl;
+                    std::cout << "Debe ser un numero entero entre 1 y 40: ";
                     while (!(std::cin >> nuevadurabilidad_base) || nuevadurabilidad_base < 1 || nuevadurabilidad_base > 40) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 1 y 40";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 1 y 40";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     DefensaAModificar->durabilidad_base = nuevadurabilidad_base;
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
                     std::cout << "Durabilidad base de " << DefensaAModificar->nombre << " actualizada a " << DefensaAModificar->durabilidad_base << " correctamente.\n";
+                    pausa();
                     break;
                 }
                 case 3: {
                     int nuevovalor_proteccion;
-                    std::cout << "Ingrese el nuevo valor de Protección: \n";
+                    std::cout << "Ingrese el nuevo valor de Proteccion: \n";
+                    std::cout << "Debe ser un numero entero entre 30 y 100, y multiplo de 10: ";
                     while (!(std::cin >> nuevovalor_proteccion) || nuevovalor_proteccion < 30 || nuevovalor_proteccion > 100 || nuevovalor_proteccion % 10 != 0) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 30 y 100, y múltiplo de 10: ";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 30 y 100, y multiplo de 10: ";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     DefensaAModificar->valor_proteccion = nuevovalor_proteccion;
-                    std::cout << "Valor de Protección de " << DefensaAModificar->nombre << " actualizada a " << DefensaAModificar->valor_proteccion << " correctamente.\n";
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
+                    std::cout << "Valor de Proteccion de " << DefensaAModificar->nombre << " actualizada a " << DefensaAModificar->valor_proteccion << " correctamente.\n";
+                    pausa();
                     break;
                 }
                 case 4:
                     std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                    std::cout << "Regresando al menú anterior...\n";
+                    std::cout << "Regresando al menu anterior...\n";
+                    this_thread::sleep_for(chrono::seconds(3));
                     break;
                 default:
-                    std::cout << "Opción inválida. Intente de nuevo.\n";
+                    std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                    pausa();
             }
         } while (opcionModificar != 4);
 
-        std::cout << "El implemento de Defensa '" << DefensaAModificar->nombre << "' fue modificado exitosamente!\n";
+        std::cout << "\nEl implemento de Defensa '" << DefensaAModificar->nombre << "' fue modificado exitosamente!\n";
+        pausa();
     }
 
 
     void eliminarDefensa() {
         if (obtenerCantidadDefensa() == 0) {
-            std::cout << "\n----- Lista vacía -----\n";
+            std::cout << "\n----- Lista vacia -----\n";
             std::cout << "\nNo hay implementos de Defensa disponibles para eliminar.\n";
+            pausa();
             return;
         }
 
         mostrarDefensa();
-        std::cout << "\nIngrese el número del implemento de Defensa a eliminar (1-" << obtenerCantidadDefensa() << "): ";
+        std::cout << "\nIngrese el numero del implemento de Defensa a eliminar (1-" << obtenerCantidadDefensa() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
 
         if (pos < 1 || pos > obtenerCantidadDefensa()) {
-            std::cout << "Posición inválida.\n";
+            std::cout << "Posicion invalida.\n";
             return;
         }
 
@@ -1546,7 +1664,10 @@ public:
         }
 
         cantidadDefensa--;
+        cout << "\nEliminando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
         std::cout << "Implemento de Defensa eliminado exitosamente!\n";
+        pausa();
 
     }
     
@@ -1554,39 +1675,50 @@ public:
 
 
 
-// Función para el menú de gestión de Armas
+// Funcion para el menu de gestion de Armas
 void gestionarDefensa() {
     ListaDefensa ListaDefensa;
     int opcionDefensa;
     do {
+        system("cls");
         std::cout << "\n--- GESTION DE DEFENSA ---\n";
-        std::cout << "1. Añadir Nuevo implemento de Defensa.\n";
+        std::cout << "1. Anadir Nuevo implemento de Defensa.\n";
         std::cout << "2. Ver implementos de Defensa Disponibles.\n";
         std::cout << "3. Modificar implemento de Defensa Existente.\n";
         std::cout << "4. Eliminar implemento de Defensa.\n";
-        std::cout << "5. Volver al menú anterior.\n"<<endl;
-        std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        std::cout << "5. Volver al menu anterior.\n"<<endl;
+        std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         std::cin >> opcionDefensa;
-        std::cin.ignore();
+        
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionDefensa) {
-            case 1:
+            case 1: {
                 ListaDefensa.anadirDefensa();
                 break;
-            case 2:
+            }
+            case 2: {
                 ListaDefensa.mostrarDefensa();
+                pausa();
                 break;
-            case 3:
+            }
+            case 3: {
                 ListaDefensa.modificarDefensa();
                 break;
-            case 4:
+            }
+            case 4: {
                 ListaDefensa.eliminarDefensa();
                 break;
-            case 5:
-                std::cout << "Volviendo al menú anterior...\n"; //return();
+            }
+            case 5: {
+                std::cout << "Volviendo al menu anterior...\n"; 
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
+            }
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionDefensa != 5);
 }
@@ -1642,10 +1774,10 @@ public:
         }
         cabeza = nullptr;
         cantidadCura = 0; 
-        std::cout << "Memoria de implementos de Curación liberada correctamente.\n";
+        std::cout << "La memoria de Implementos de Curacion fue eliminada correctamente.\n";
     }
 
-    // Función para agregar una Curas a la lista
+    // Funcion para agregar una Curas a la lista
     void agregarCura(Cura* nuevaCura) {
         if (cabeza == nullptr) {
             cabeza = nuevaCura;
@@ -1663,17 +1795,18 @@ public:
     // Mostrar la lista de Curas
     void mostrarCura() const {
         if (cabeza == nullptr) {
-            std::cout << "\n----- Lista vacía -----\n";
-            std::cout << "\nNo hay implementos de Curación disponibles.\n";
+            std::cout << "\n----- Lista vacia -----\n";
+            std::cout << "\nNo hay implementos de Curacion disponibles.\n";
+            pausa();
             return;
         }
-        std::cout << "\n----- Implementos de Curación Disponibles -----\n" << endl;
+        std::cout << "\n----- Implementos de Curacion Disponibles -----\n" << endl;
         Cura* actual = cabeza;
         size_t i = 1;
 
         while (actual != nullptr) {
             std::cout << i << ". " << actual->nombre << endl;                    
-            std::cout << "   Uso máximo: " << actual->uso_maximo
+            std::cout << "   Uso maximo: " << actual->uso_maximo
                  << " |  Valor que aporta a la salud: " << actual->suma_salud<< "\n" << endl;
             actual = actual->siguiente;
             i++;
@@ -1682,10 +1815,10 @@ public:
     }
 
 
-    // Obtener una cura por índice 
+    // Obtener una cura por indice 
     Cura *obtenerCuraPorIndice(int index) const {
         if (index < 0 || index >= cantidadCura) {
-            return nullptr;                                           // Índice inválido
+            return nullptr;                                           // indice invalido
         }
         Cura *actual = cabeza;
         for (int i = 0; i < index; ++i) {
@@ -1707,18 +1840,19 @@ public:
     }
 
 
-    // Función para añadir una nueva Cura por parte del usuario
+    // Funcion para anadir una nueva Cura por parte del usuario
     void anadirCura() {
-        std::cout << "\n----- Crear Nuevo implemento de Curación -----\n";
-        string nombre = validarLongitudString("Ingrese el Nombre del nuevo implemento de Curación (máximo 20 caracteres): ", 20);
+        system("cls");
+        std::cout << "\n----- Crear Nuevo implemento de Curacion -----\n";
+        string nombre = validarLongitudString("Ingrese el Nombre del nuevo implemento de Curacion (maximo 20 caracteres): ", 20);
 
         int uso_maximo;
-        std::cout << "\nIngrese valor de uso máximo (Cuántas veces puede aplicarse en el héroe)\n";
-        std::cout << "(Debe ser un número entero entre 1 y 10): \n"<<endl;
+        std::cout << "\nIngrese valor de uso maximo (Cuantas veces puede aplicarse en el heroe)\n";
+        std::cout << "(Debe ser un numero entero entre 1 y 10): ";
         while (!(std::cin >> uso_maximo) || uso_maximo < 1 || uso_maximo > 10) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << uso_maximo << endl;   
-            std::cout << "Debe ser un número entre 1 y 10.\n";    
+            std::cout << "Debe ser un numero entre 1 y 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
         
             std::cin.clear();
@@ -1728,11 +1862,11 @@ public:
 
         int suma_salud;
         std::cout << "\nIngrese valor que aporta a la salud del heroe\n";
-        std::cout << "(Debe ser un número entero entre 30 y 150, y múltiplo de 10): \n"<<endl;
+        std::cout << "(Debe ser un numero entero entre 30 y 150, y multiplo de 10): ";
         while (!(std::cin >> suma_salud) || suma_salud < 30 || suma_salud > 150 || suma_salud % 10 != 0) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << suma_salud << endl;   
-            std::cout << "Debe ser un número entre 30 y 150, y múltiplo de 10.\n";    
+            std::cout << "Debe ser un numero entre 30 y 150, y multiplo de 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
             std::cin.clear();
             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -1740,111 +1874,132 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         agregarCura(crearCura(nombre, uso_maximo, suma_salud));
-        std::cout << "Implemento de Curación '" << nombre << "' agregado exitosamente!\n";
+        cout << "\nCreando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        std::cout << "Implemento de Curacion '" << nombre << "' agregado exitosamente!\n";
+        pausa();
     };
 
-        // Nueva función para modificar una Cura existente
+        // Nueva funcion para modificar una Cura existente
         void modificarCura() {
             if (cabeza == nullptr) { // Revisa si la lista esta vacia
-                std::cout << "\n----- Lista vacía -----\n";
-                std::cout << "\nNo hay implementos de Curación disponibles para modificar.\n"; 
+                std::cout << "\n----- Lista vacia -----\n";
+                std::cout << "\nNo hay implementos de Curacion disponibles para modificar.\n"; 
+                pausa();
                 return;
             }
 
             mostrarCura();
-            std::cout << "\nIngrese el número del implemento de Curación a modificar (1-" << obtenerCantidadCura() << "): ";
+            std::cout << "\nIngrese el numero del implemento de Curacion a modificar (1-" << obtenerCantidadCura() << "): ";
             int pos;
             std::cin >> pos;
             std::cin.ignore();
 
             if (pos < 1 || pos > obtenerCantidadCura()) {
                 std::cout << "----------- ERROR -----------";
-                std::cout << "\nEl número ingresado es:" << pos;
-                std::cout << "\nSelección inválida: Ese numero de implemento de Curación no existe en la lista\n.";
+                std::cout << "\nEl numero ingresado es:" << pos;
+                std::cout << "\nSeleccion invalida: Ese numero de implemento de Curacion no existe en la lista\n.";
                 cout << "Intente nuevamente.\n"<<endl;
                 return;
             }
 
             Cura* curaAModificar = obtenerCuraPorIndice(pos - 1);
 
-            std::cout << "\nModificando implemento de Curación: " << curaAModificar->nombre << "\n"; //nombreCura
+            std::cout << "\nModificando implemento de Curacion: " << curaAModificar->nombre << "\n"; //nombreCura
 
             int opcionModificar;
             do {
-                std::cout << "\n--- ¿Qué desea modificar del implemento '" << curaAModificar->nombre << "'? ---\n";
+                system("cls");
+                std::cout << "\n--- Que desea modificar del Implemento '" << curaAModificar->nombre << "'? ---\n";
                 std::cout << "1. Nombre.\n";
-                std::cout << "2. Uso máximo.\n";
+                std::cout << "2. Uso maximo.\n";
                 std::cout << "3. Valor que aporta a la salud.\n";
-                std::cout << "4. Finalizar modificación.\n"<<endl;
-                std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+                std::cout << "4. Finalizar modificacion.\n"<<endl;
+                std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
                 std::cin >> opcionModificar;
-                std::cin.ignore();
+                
+                cin.clear();
+                (cin.ignore(1000,'\n'));
 
                 switch (opcionModificar) {
                     case 1: {
-                        string nuevoNombreCura = validarLongitudString("Ingrese el nuevo nombre para el implemento de Curación " + curaAModificar->nombre + ", máximo 20 caracteres: ", 20);
+                        string nuevoNombreCura = validarLongitudString("Ingrese el nuevo nombre para el implemento de Curacion " + curaAModificar->nombre + ", maximo 20 caracteres: ", 20);
                         curaAModificar->nombre = nuevoNombreCura;
-                        std::cout << "Nombre de implemento de Curación actualizado a '" << curaAModificar->nombre << "' correctamente.\n";
+                        cout << "\nActualizando datos...\n"<<endl;
+                        this_thread::sleep_for(chrono::seconds(3));
+                        std::cout << "Nombre de implemento de Curacion actualizado a '" << curaAModificar->nombre << "' correctamente.\n";
+                        pausa();
                         break;
                     }
                     case 2: {
                         int nuevouso_maximo;
-                        std::cout << "Ingrese el nuevo Uso máximo \n";
-                        std::cout << "Debe ser un número entero entre 1 y 10: \n"<<endl;
+                        std::cout << "Ingrese el nuevo Uso maximo \n";
+                        std::cout << "Debe ser un numero entero entre 1 y 10: ";
                         while (!(std::cin >> nuevouso_maximo) || nuevouso_maximo < 1 || nuevouso_maximo > 10) {
-                            std::cout << "Entrada inválida. Ingrese un número entre 1 y 10";
+                            std::cout << "Entrada invalida. Ingrese un numero entre 1 y 10";
                             std::cin.clear();
                             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         }
                         std::cin.ignore();
                         curaAModificar->uso_maximo = nuevouso_maximo;
-                        std::cout << "Uso máximo de " << curaAModificar->nombre << " actualizado a " << curaAModificar->uso_maximo << " correctamente.\n"; 
+                        cout << "\nActualizando datos...\n"<<endl;
+                        this_thread::sleep_for(chrono::seconds(3));
+                        std::cout << "Uso maximo de " << curaAModificar->nombre << " actualizado a " << curaAModificar->uso_maximo << " correctamente.\n"; 
+                        pausa();
                         break;
                     }
                     case 3: {
                         int nuevasuma_salud;
                         std::cout << "Ingrese el nuevo Valor que aporta a la salud \n"; 
-                        std::cout << "Debe ser un número entero entre 30 y 150, y múltiplo de 10: \n"<<endl;
+                        std::cout << "Debe ser un numero entero entre 30 y 150, y multiplo de 10: ";
                         while (!(std::cin >> nuevasuma_salud) || nuevasuma_salud < 30 || nuevasuma_salud > 150 || nuevasuma_salud % 10 != 0) {
-                            std::cout << "Entrada inválida. Ingrese un número entre 30 y 150, y múltiplo de 10: ";
+                            std::cout << "Entrada invalida. Ingrese un numero entre 30 y 150, y multiplo de 10: ";
                             std::cin.clear();
                             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         }
                         std::cin.ignore();
                         curaAModificar->suma_salud = nuevasuma_salud;
+                        cout << "\nActualizando datos...\n"<<endl;
+                        this_thread::sleep_for(chrono::seconds(3));
                         std::cout << "Valor que " << curaAModificar->nombre << " aporta a la salud actualizado a " << curaAModificar->suma_salud << " correctamente.\n"; 
+                        pausa();
                         break;
                     }
-                    case 4:
+                    case 4: {
                         std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                        std::cout << "Regresando al menú anterior...\n";
+                        std::cout << "Regresando al menu anterior...\n";
+                        this_thread::sleep_for(chrono::seconds(3));
                         break;
+                    }
                     default:
-                        std::cout << "Opción inválida. Intente de nuevo.\n";
+                        std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                        pausa();
                 }
             } while (opcionModificar != 4);
 
-            std::cout << "El implemento de Curación '" << curaAModificar->nombre << "' fue modificado exitosamente!\n"<<endl;
+            std::cout << "\nEl implemento de Curacion '" << curaAModificar->nombre << "' fue modificado exitosamente!\n"<<endl;
+            pausa();
         }
 
 // Eliminar (Quitar un cura de la lista)
     void eliminarCura() {
         if (obtenerCantidadCura() == 0) {
-            std::cout << "\n----- Lista vacía -----\n";
-            std::cout << "\nNo hay implementos de Curación disponibles para eliminar.\n";
+            std::cout << "\n----- Lista vacia -----\n";
+            std::cout << "\nNo hay implementos de Curacion disponibles para eliminar.\n";
+            pausa();
             return;
         }
 
         mostrarCura();
-        std::cout << "\nIngrese el número del implemento de Curación a eliminar (1-" << obtenerCantidadCura() << "): ";
+        std::cout << "\nIngrese el numero del implemento de Curacion a eliminar (1-" << obtenerCantidadCura() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadCura()) {
             std::cout << "----------- ERROR -----------";
-            std::cout << "\nEl número ingresado es:" << pos;
-            std::cout << "\nSelección inválida: Ese numero de implemento de Curación no existe en la lista\n.";
+            std::cout << "\nEl numero ingresado es:" << pos;
+            std::cout << "\nSeleccion invalida: Ese numero de implemento de Curacion no existe en la lista\n.";
             cout << "Intente nuevamente.\n"<<endl;
             return;
         }
@@ -1854,7 +2009,7 @@ public:
 
         if (pos == 1) {
             cabeza = cabeza->siguiente;
-            std::cout << "Eliminando implemento de Curación: " << actual->nombre << endl;
+            std::cout << "Eliminando implemento de Curacion: " << actual->nombre << endl;
             delete actual;
         } else {
             for (int i = 1; i < pos; i++) {
@@ -1862,12 +2017,15 @@ public:
                 actual = actual->siguiente;
             }
             anterior->siguiente = actual->siguiente;
-            std::cout << "Eliminando implemento de Curación: " << actual->nombre << endl;
+            std::cout << "Eliminando implemento de Curacion: " << actual->nombre << endl;
             delete actual;
         }
 
         cantidadCura--;
-        std::cout << "Implemento de Curación eliminado exitosamente!\n";
+        cout << "\nEliminando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        std::cout << "Implemento de Curacion eliminado exitosamente!\n";
+        pausa();
     }
 
     size_t obtenerCantidadCura() const {  //int 
@@ -1876,20 +2034,23 @@ public:
 };
 
 
-// Función para el menú de gestión de Curas
+// Funcion para el menu de gestion de Curas
 void gestionarCura() {
     ListaCura listaCura;
     int opcionCura;
     do { 
-        std::cout << "\n--- GESTION DE IMPLEMENTOS DE CURACIÓN ---\n";
-        std::cout << "1. Añadir Nuevo implemento de Curación.\n";
-        std::cout << "2. Ver implementos de Curación Disponibles.\n";
-        std::cout << "3. Modificar implemento de Curación Existente.\n";
-        std::cout << "4. Eliminar implemento de Curación.\n";
-        std::cout << "5. Volver al menú anterior.\n"<<endl;
-        std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        system("cls");
+        std::cout << "\n--- GESTION DE IMPLEMENTOS DE CURACION ---\n";
+        std::cout << "1. Anadir Nuevo implemento de Curacion.\n";
+        std::cout << "2. Ver implementos de Curacion Disponibles.\n";
+        std::cout << "3. Modificar implemento de Curacion Existente.\n";
+        std::cout << "4. Eliminar implemento de Curacion.\n";
+        std::cout << "5. Volver al menu anterior.\n"<<endl;
+        std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         std::cin >> opcionCura;
-        std::cin.ignore();
+        
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionCura) {
             case 1:
@@ -1897,6 +2058,7 @@ void gestionarCura() {
                 break;
             case 2:
                 listaCura.mostrarCura();
+                pausa();
                 break;
             case 3:
                 listaCura.modificarCura();
@@ -1905,10 +2067,12 @@ void gestionarCura() {
                 listaCura.eliminarCura();
                 break;
             case 5:
-                std::cout << "Volviendo al menú anterior...\n"; //return();
+                std::cout << "Volviendo al menu anterior...\n"; 
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionCura != 5);
 }
@@ -1937,7 +2101,7 @@ void gestionarCura() {
 
 
 
-// Clase para gestionar la lista de Poder Mágico
+// Clase para gestionar la lista de Poder Magico
 
 class ListaPoder_Magico {
 private:
@@ -1965,10 +2129,10 @@ public:
         }
         cabeza = nullptr;
         cantidadPoder_Magico = 0; 
-        std::cout << "Memoria de Poderes Mágicos liberada correctamente.\n";
+        std::cout << "La memoria de Poderes Magicos fue eliminada correctamente.\n";
     }
 
-    // Función para agregar una Poder_Magico a la lista
+    // Funcion para agregar una Poder_Magico a la lista
     void agregarPoder_Magico(Poder_Magico* nuevaPoder_Magico) {
         if (cabeza == nullptr) {
             cabeza = nuevaPoder_Magico;
@@ -1985,19 +2149,20 @@ public:
     // Mostrar la lista de Poder_Magico
     void mostrarPoder_Magico() const {
         if (cabeza == nullptr) {
-            std::cout << "\n----- Lista vacía -----\n";
-            std::cout << "\nNo hay Poderes Mágicos disponibles.\n";
+            std::cout << "\n----- Lista vacia -----\n";
+            std::cout << "\nNo hay Poderes Magicos disponibles.\n";
+            pausa();
             return;
         }
-        std::cout << "\n----- Poderes Mágicos Disponibles -----\n" << endl;
+        std::cout << "\n----- Poderes Magicos Disponibles -----\n" << endl;
         Poder_Magico* actual = cabeza;
         size_t i = 1;
 
         while (actual != nullptr) {
             std::cout << i << ". " << actual->nombre << endl;                    
-            std::cout << "   Uso máximo: " << actual->uso_maximo
-                 << " | Valor de modificación (Cantidad sumada al campo): " << actual->valor_modificacion
-                 << " | Campo de modificación (1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa): " << actual->campo_modificacion<< "\n" << endl;
+            std::cout << "   Uso maximo: " << actual->uso_maximo
+                 << " | Valor de modificacion (Cantidad sumada al campo): " << actual->valor_modificacion
+                 << " | Campo de modificacion (1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa): " << actual->campo_modificacion<< "\n" << endl;
             actual = actual->siguiente;
             i++;
         }
@@ -2005,10 +2170,10 @@ public:
     }
 
 
-    // Obtener una Poder_Magico por índice 
+    // Obtener una Poder_Magico por indice 
     Poder_Magico *obtenerPoderPorIndice(int index) const {
         if (index < 0 || index >= cantidadPoder_Magico) {
-            return nullptr;                                           // Índice inválido
+            return nullptr;                                           // indice invalido
         }
         Poder_Magico *actual = cabeza;
         for (int i = 0; i < index; ++i) {
@@ -2026,24 +2191,25 @@ public:
             }
             actual = actual->siguiente;
         }
-        return nullptr; // No se encontró la especie
+        return nullptr; // No se encontro la especie
     }
 
     
 
-    // Función para añadir una nueva Poder_Magico por parte del usuario
+    // Funcion para anadir una nueva Poder_Magico por parte del usuario
     void anadirPoder_Magico() {
-        std::cout << "\n----- Crear Nuevo Poder Mágico -----\n";
-        string nombre = validarLongitudString("Ingrese el Nombre del nuevo Poder Mágico (máximo 20 caracteres): ", 20);
+        system("cls");
+        std::cout << "\n----- Crear Nuevo Poder Magico -----\n";
+        string nombre = validarLongitudString("Ingrese el Nombre del nuevo Poder Magico (maximo 20 caracteres): ", 20);
 
         int valor_modificacion;
-        std::cout << "\nIngrese valor que se sumará al campo seleccionado para el héroe\n";
-        std::cout << "(Debe ser un número entero entre 50 y 100, y múltiplo de 10. \n";
+        std::cout << "\nIngrese valor que se sumara al campo seleccionado para el heroe\n";
+        std::cout << "Debe ser un numero entero entre 50 y 100, y multiplo de 10: ";
         std::cout << "Valores admitidos: 50, 60, 70, 80, 90): \n" << endl;
         while (!(std::cin >> valor_modificacion) || valor_modificacion < 50 || valor_modificacion > 100 || valor_modificacion % 10 != 0) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << valor_modificacion << endl;   
-            std::cout << "Debe ser un número entre 50 y 100, y múltiplo de 10.\n";    
+            std::cout << "Debe ser un numero entre 50 y 100, y multiplo de 10.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
             std::cin.clear();
             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -2051,12 +2217,12 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         int campo_modificacion;
-        std::cout << "\nIngrese el número correspondiente al campo que desea seleccionar: \n";
-        std::cout << "1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa \n" << endl;
+        std::cout << "\nIngrese el numero correspondiente al campo que desea seleccionar: \n";
+        std::cout << "1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa: ";
         while (!(std::cin >> campo_modificacion) || campo_modificacion < 1 || campo_modificacion > 4) {
             std::cout << "----------- ERROR -----------\n";
             std::cout << "El valor ingresado es: " << campo_modificacion << endl;   
-            std::cout << "Debe ser un número entero entre 1 y 4.\n";    
+            std::cout << "Debe ser un numero entero entre 1 y 4.\n";    
             std::cout << "Intente nuevamente.\n" << endl;
             std::cin.clear();
             std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -2064,111 +2230,133 @@ public:
         std::cin.ignore(); // Limpiar el buffer
 
         agregarPoder_Magico(crearPoder_Magico(nombre, valor_modificacion, campo_modificacion));
-        std::cout << "Poder Mágico '" << nombre << "' agregado exitosamente!\n";
+        cout << "\nCreando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        std::cout << "Poder Magico '" << nombre << "' agregado exitosamente!\n";
+        pausa();
     }
 
-    // Función para modificar un Poder_Magico existente
+    // Funcion para modificar un Poder_Magico existente
     void modificarPoder_Magico() {
         if (cabeza == nullptr) { // Revisa si la lista esta vacia
-            std::cout << "\n----- Lista vacía -----\n";
-            std::cout << "\nNo hay Poderes Mágicos disponibles para modificar.\n"; 
+            std::cout << "\n----- Lista vacia -----\n";
+            std::cout << "\nNo hay Poderes Magicos disponibles para modificar.\n"; 
+            pausa();
             return;
         }
 
         mostrarPoder_Magico();
-        std::cout << "\nIngrese el número del Poder Mágico a modificar (1-" << obtenerCantidadPoderMagico() << "): ";
+        std::cout << "\nIngrese el numero del Poder Magico a modificar (1-" << obtenerCantidadPoderMagico() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadPoderMagico()) {
             std::cout << "----------- ERROR -----------";
-            std::cout << "\nEl número ingresado es:" << pos;
-            std::cout << "\nSelección inválida: Ese numero de Poder Mágico no existe en la lista\n.";
+            std::cout << "\nEl numero ingresado es:" << pos;
+            std::cout << "\nSeleccion invalida: Ese numero de Poder Magico no existe en la lista\n.";
             cout << "Intente nuevamente.\n"<<endl;
             return;
         }
 
         Poder_Magico* poderAModificar = obtenerPoderPorIndice(pos - 1);
 
-        std::cout << "\nModificando Poder Mágico: " << poderAModificar->nombre << "\n"; 
+        std::cout << "\nModificando Poder Magico: " << poderAModificar->nombre << "\n"; 
 
         int opcionModificar;
         do {
-            std::cout << "\n--- ¿Qué desea modificar del Poder Mágico '" << poderAModificar->nombre << "'? ---\n";
+            system("cls");
+            std::cout << "\n--- Que desea modificar del Poder Magico '" << poderAModificar->nombre << "'? ---\n";
             std::cout << "1. Nombre.\n";
-            std::cout << "2. Valor de modificación.\n";
-            std::cout << "3. Campo de modificación.\n";
-            std::cout << "4. Finalizar modificación.\n"<<endl;
-            std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+            std::cout << "2. Valor de modificacion.\n";
+            std::cout << "3. Campo de modificacion.\n";
+            std::cout << "4. Finalizar modificacion.\n"<<endl;
+            std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
             std::cin >> opcionModificar;
-            std::cin.ignore();
+            
+            cin.clear();
+            (cin.ignore(1000,'\n'));
 
             switch (opcionModificar) {
                 case 1: {
-                    string nuevoNombrePoder_Magico = validarLongitudString("Ingrese el nuevo nombre para el Arma " + poderAModificar->nombre + ", máximo 20 caracteres: ", 20);
+                    string nuevoNombrePoder_Magico = validarLongitudString("Ingrese el nuevo nombre para el Poder Magico " + poderAModificar->nombre + ", maximo 20 caracteres: ", 20);
                     poderAModificar->nombre = nuevoNombrePoder_Magico;
-                    std::cout << "Nombre de Poder Mágico actualizado a '" << poderAModificar->nombre<< "' correctamente.\n";
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
+                    std::cout << "Nombre de Poder Magico actualizado a '" << poderAModificar->nombre<< "' correctamente.\n";
+                    pausa();
                     break;
                 }
                 case 2: {
                     int nuevovalor_modificacion;
-                    std::cout << "Ingrese el nuevo Valor de modificación \n";
+                    std::cout << "Ingrese el nuevo Valor de modificacion \n";
+                    std::cout << "Debe ser un numero entero entre 50 y 100, y multiplo de 10: ";
                     while (!(std::cin >> nuevovalor_modificacion) || nuevovalor_modificacion < 50 || nuevovalor_modificacion > 100) {
-                        std::cout << "Entrada inválida. Ingrese un número entre 50 y 100, y múltiplo de 10.";
+                        std::cout << "Entrada invalida. Ingrese un numero entre 50 y 100, y multiplo de 10.";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     poderAModificar->valor_modificacion = nuevovalor_modificacion;
-                    std::cout << "Valor de modificación de " << poderAModificar->nombre << " actualizado a " << poderAModificar->valor_modificacion << " correctamente.\n";
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
+                    std::cout << "Valor de modificacion de " << poderAModificar->nombre << " actualizado a " << poderAModificar->valor_modificacion << " correctamente.\n";
+                    pausa();
                     break;
                 }
                 case 3: {
                     int nuevocampo_modificacion;
-                    std::cout << "Ingrese el nuevo Campo de modificación \n";
-                    std::cout << "(1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa): \n" << endl;
+                    std::cout << "Ingrese el nuevo Campo de modificacion \n";
+                    std::cout << "(1= Fortaleza, 2= Rapidez, 3= Ataque, 4= Defensa): ";
                     while (!(std::cin >> nuevocampo_modificacion) || nuevocampo_modificacion < 1 || nuevocampo_modificacion > 4) {
-                        std::cout << "Entrada inválida. Ingrese un número entero entre 1 y 4.";
+                        std::cout << "Entrada invalida. Ingrese un numero entero entre 1 y 4.";
                         std::cin.clear();
                         std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                     std::cin.ignore();
                     poderAModificar->campo_modificacion = nuevocampo_modificacion;
-                    std::cout << "Campo de modificación de " << poderAModificar->nombre << " actualizado a " << poderAModificar->campo_modificacion << " correctamente.\n";
+                    cout << "\nActualizando datos...\n"<<endl;
+                    this_thread::sleep_for(chrono::seconds(3));
+                    std::cout << "Campo de modificacion de " << poderAModificar->nombre << " actualizado a " << poderAModificar->campo_modificacion << " correctamente.\n";
+                    pausa();
                     break;
                 }
-                case 4:
+                case 4:{
                     std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                    std::cout << "Regresando al menú anterior...\n";
+                    std::cout << "Regresando al menu anterior...\n";
+                    this_thread::sleep_for(chrono::seconds(3));
                     break;
+                }
                 default:
-                    std::cout << "Opción inválida. Intente de nuevo.\n";
+                    std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                    pausa();
             }
         } while (opcionModificar != 4);
 
-        std::cout << "El Poder Mággico '" << poderAModificar->nombre << "' fue modificado exitosamente!\n"<<endl;
+        std::cout << "\nEl Poder Magico '" << poderAModificar->nombre << "' fue modificado exitosamente!\n"<<endl;
+        pausa();
     }
 
 
 // Eliminar (Quitar un cura de la lista)
     void eliminarPoder_Magico() {
         if (obtenerCantidadPoderMagico() == 0) {
-            std::cout << "\n----- Lista vacía -----\n";
-            std::cout << "\nNo hay Poderes Mágicos disponibles para eliminar.\n";
+            std::cout << "\n----- Lista vacia -----\n";
+            std::cout << "\nNo hay Poderes Magicos disponibles para eliminar.\n";
+            pausa();
             return;
         }
 
         mostrarPoder_Magico();
-        std::cout << "\nIngrese el número del Poder Mágico a eliminar (1-" << obtenerCantidadPoderMagico() << "): ";
+        std::cout << "\nIngrese el numero del Poder Magico a eliminar (1-" << obtenerCantidadPoderMagico() << "): ";
         int pos;
         std::cin >> pos;
         std::cin.ignore();
 
         if (pos < 1 || pos > obtenerCantidadPoderMagico()) {
             std::cout << "----------- ERROR -----------\n";
-            std::cout << "El número ingresado es:" << pos;
-            std::cout << "\nSelección inválida: Ese numero de Poder Mágico no existe en la lista\n.";
+            std::cout << "El numero ingresado es:" << pos;
+            std::cout << "\nSeleccion invalida: Ese numero de Poder Magico no existe en la lista\n.";
             cout << "Intente nuevamente.\n"<<endl;
             return;
         }
@@ -2178,7 +2366,7 @@ public:
 
         if (pos == 1) {
             cabeza = cabeza->siguiente;
-            std::cout << "Eliminando Poder Mágico: " << actual->nombre << endl;
+            std::cout << "Eliminando Poder Magico: " << actual->nombre << endl;
             delete actual;
         } else {
             for (int i = 1; i < pos; i++) {
@@ -2186,12 +2374,15 @@ public:
                 actual = actual->siguiente;
             }
             anterior->siguiente = actual->siguiente;
-            std::cout << "Eliminando Poder Mágico: " << actual->nombre << endl;
+            std::cout << "Eliminando Poder Magico: " << actual->nombre << endl;
             delete actual;
         }
 
         cantidadPoder_Magico--;
-        std::cout << "Poder Mágico eliminado exitosamente!\n";
+        cout << "\nEliminando datos...\n"<<endl;
+        this_thread::sleep_for(chrono::seconds(3));
+        std::cout << "Poder Magico eliminado exitosamente!\n";
+        pausa();
     }
 
     int obtenerCantidadPoderMagico() const {
@@ -2200,20 +2391,23 @@ public:
 };
 
 
-// Función para el menú de gestión de Poder_Magico
+// Funcion para el menu de gestion de Poder_Magico
 void gestionarPoder_Magico() {
     ListaPoder_Magico listaPoder_Magico;
     int opcionPoder;
     do {
-        std::cout << "\n--- GESTION DE PODERES MÁGICOS ---\n";
-        std::cout << "1. Añadir Nueva Poder Mágico.\n";
-        std::cout << "2. Ver Poderes Mágicos Disponibles.\n";
-        std::cout << "3. Modificar Poder Mágico Existente.\n";
-        std::cout << "4. Eliminar Poder Mágico.\n";
-        std::cout << "5. Volver al menú anterior.\n"<<endl;
-        std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        system("cls");
+        std::cout << "\n--- GESTION DE PODERES MaGICOS ---\n";
+        std::cout << "1. Anadir Nuevo Poder Magico.\n";
+        std::cout << "2. Ver Poderes Magicos Disponibles.\n";
+        std::cout << "3. Modificar Poder Magico Existente.\n";
+        std::cout << "4. Eliminar Poder Magico.\n";
+        std::cout << "5. Volver al menu anterior.\n"<<endl;
+        std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         std::cin >> opcionPoder;
-        std::cin.ignore();
+        
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionPoder) {
             case 1:
@@ -2221,6 +2415,7 @@ void gestionarPoder_Magico() {
                 break;
             case 2:
                 listaPoder_Magico.mostrarPoder_Magico();
+                pausa();
                 break;
             case 3:
                 listaPoder_Magico.modificarPoder_Magico();
@@ -2229,10 +2424,12 @@ void gestionarPoder_Magico() {
                 listaPoder_Magico.eliminarPoder_Magico();
                 break;
             case 5:
-                std::cout << "Volviendo al menú anterior...\n"; //return();
+                std::cout << "Volviendo al menu anterior...\n"; 
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionPoder != 5);
 }
@@ -2263,13 +2460,14 @@ void gestionarPoder_Magico() {
 
 
 Especie_Orco* inicializarEstructura() {
-    return nullptr; // Retorna un puntero nulo indicando que está vacía
+    return nullptr; // Retorna un puntero nulo indicando que esta vacia
 }
 
 void mostrarOrcos(Especie_Orco* cabezaOrco) {
     if (cabezaOrco == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
+        std::cout << "\n----- Lista vacia -----\n";
         std::cout << "\nNo hay orcos disponibles.\n";
+        pausa();
         return;
     }
 
@@ -2278,7 +2476,7 @@ void mostrarOrcos(Especie_Orco* cabezaOrco) {
     int indiceOrco = 1;
     while (actualOrco != nullptr) {
         std::cout << indiceOrco++ << ". Nombre de la especie: " << actualOrco->nombre_especie << endl;
-        std::cout << "   Daño Base: " << actualOrco->dano_base
+        std::cout << "   Dano Base: " << actualOrco->dano_base
              << " | Salud Base: " << actualOrco->salud_base
              << " | Rapidez Base: " << actualOrco->rapidez_base << "\n";
         actualOrco = actualOrco->siguiente;
@@ -2290,8 +2488,9 @@ void mostrarOrcos(Especie_Orco* cabezaOrco) {
 //funcion para modificar orcos existente
 void modificarOrco(Especie_Orco* cabezaOrco) {
     if (cabezaOrco == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
+        std::cout << "\n----- Lista vacia -----\n";
         std::cout << "\nNo hay orcos disponibles para modificar.\n";
+        pausa();
         return;
     }
 
@@ -2299,7 +2498,7 @@ void modificarOrco(Especie_Orco* cabezaOrco) {
     mostrarOrcos(cabezaOrco);
 
     int seleccionOrco;
-    std::cout << "Seleccione el número del orco que desea modificar: ";
+    std::cout << "Seleccione el numero del orco que desea modificar: ";
     std::cin >> seleccionOrco;
 
     Especie_Orco *actualOrco = cabezaOrco;
@@ -2311,78 +2510,97 @@ void modificarOrco(Especie_Orco* cabezaOrco) {
 
     if (actualOrco == nullptr) {
         std::cout << "----------- ERROR -----------\n";
-        std::cout << "El número ingresado es:" << actualOrco;
-        std::cout << "\nSelección inválida: Ese numero de orco no existe en la lista\n"<<endl;
+        std::cout << "El numero ingresado es:" << actualOrco;
+        std::cout << "\nSeleccion invalida: Ese numero de orco no existe en la lista\n"<<endl;
         return;
     }
 
     int opcionOrco;
     do {
-        std::cout << "\n--- ¿Qué desea modificar del Orco '" << actualOrco->nombre_especie << "'? ---\n";
+        system("cls");
+        std::cout << "\n--- Que desea modificar del Orco '" << actualOrco->nombre_especie << "'? ---\n";
         std::cout << "1. Nombre de la especie.\n";
-        std::cout << "2. Daño Base.\n";
+        std::cout << "2. Dano Base.\n";
         std::cout << "3. Salud Base.\n";
         std::cout << "4. Rapidez Base.\n";
-        std::cout << "5. Finalizar modificación.\n"<<endl;
-        std::cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        std::cout << "5. Finalizar modificacion.\n"<<endl;
+        std::cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         std::cin >> opcionOrco;
+
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionOrco) {
             case 1: {
-                string nuevoNombreOrco = validarLongitudString("Ingrese el nuevo nombre para la especie" + actualOrco->nombre_especie + ", máximo 20 caracteres: ", 20);
+                string nuevoNombreOrco = validarLongitudString("Ingrese el nuevo nombre para la especie" + actualOrco->nombre_especie + ", maximo 20 caracteres: ", 20);
                 actualOrco->nombre_especie = nuevoNombreOrco;
+                cout << "\nActualizando datos...\n"<<endl;
+                this_thread::sleep_for(chrono::seconds(3));
                 std::cout << "Nombre de Especie de orco actualizado a '" << actualOrco->nombre_especie << "' correctamente.\n";
+                pausa();
                 break;
             }    
             case 2: {
                 int nuevodano_base;
-                std::cout << "Ingrese el nuevo Daño base \n";
-                std::cout << "Debe ser un número entero entre 10 y 60, y múltiplo de 10: \n"<<endl;
+                std::cout << "Ingrese el nuevo Dano base \n";
+                std::cout << "Debe ser un numero entero entre 10 y 60, y multiplo de 10: ";
                 while (!(std::cin >> nuevodano_base) || nuevodano_base < 10 || nuevodano_base > 60 || nuevodano_base % 10 != 0) {
-                    std::cout << "Entrada inválida. Ingrese un número entre 10 y 60";
+                    std::cout << "Entrada invalida. Ingrese un numero entre 10 y 60";
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
                 std::cin.ignore();
                 actualOrco->dano_base = nuevodano_base;
-                std::cout << "Daño base de " << actualOrco->nombre_especie << " actualizada a " << actualOrco->dano_base << " correctamente.\n";
+                cout << "\nActualizando datos...\n"<<endl;
+                this_thread::sleep_for(chrono::seconds(3));
+                std::cout << "Dano base de " << actualOrco->nombre_especie << " actualizada a " << actualOrco->dano_base << " correctamente.\n";
+                pausa();
                 break;
             }
             case 3: {
                 int nuevasalud_base;
                 std::cout << "Ingrese la nueva Salud base \n";
-                std::cout << "Debe ser un número entero entre 100 y 300, y múltiplo de 50: \n"<<endl;
+                std::cout << "Debe ser un numero entero entre 100 y 300, y multiplo de 50: ";
                 while (!(std::cin >> nuevasalud_base) || nuevasalud_base < 100 || nuevasalud_base > 300 || nuevasalud_base % 50 != 0) {
-                    std::cout << "Entrada inválida. Ingrese un número entre 100 y 500, y múltiplo de 50.";
+                    std::cout << "Entrada invalida. Ingrese un numero entre 100 y 500, y multiplo de 50.";
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
                 std::cin.ignore();
                 actualOrco->salud_base = nuevasalud_base;
+                cout << "\nActualizando datos...\n"<<endl;
+                this_thread::sleep_for(chrono::seconds(3));
                 std::cout << "Salud base de " << actualOrco->nombre_especie << " actualizada a " << actualOrco->salud_base << " correctamente.\n";
+                pausa();
                 break;
             }
             case 4: {
                 int nuevarapidez_base;
                 std::cout << "Ingrese la nueva Rapidez base \n";
-                std::cout << "Debe ser un número entero entre 50 y 200, y múltiplo de 50: \n"<<endl;
+                std::cout << "Debe ser un numero entero entre 50 y 200, y multiplo de 50: ";
                 std::cout << "(Valores admitidos: 50, 100, 150, 200): \n" << endl;
                 while (!(std::cin >> nuevarapidez_base) || nuevarapidez_base < 50 || nuevarapidez_base > 200 || nuevarapidez_base % 50 != 0) {
-                    std::cout << "Entrada inválida. Ingrese un número entre 50 y 200, y múltiplo de 50.";
+                    std::cout << "Entrada invalida. Ingrese un numero entre 50 y 200, y multiplo de 50.";
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
                 std::cin.ignore();
                 actualOrco->rapidez_base = nuevarapidez_base;
+                cout << "\nActualizando datos...\n"<<endl;
+                this_thread::sleep_for(chrono::seconds(3));
                 std::cout << "Rapidez base de " << actualOrco->nombre_especie << " actualizada a " << actualOrco->rapidez_base << " correctamente.\n";
+                pausa();
                 break;
             }
-            case 5:
+            case 5: {
                 std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                std::cout << "Regresando al menú anterior...\n";
+                std::cout << "Regresando al menu anterior...\n";
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
+            }
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionOrco != 5);
 }
@@ -2390,8 +2608,9 @@ void modificarOrco(Especie_Orco* cabezaOrco) {
 // funcion para eliminar orco existente
 void eliminarOrco(Especie_Orco*& cabezaOrco) {
     if (cabezaOrco == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
+        std::cout << "\n----- Lista vacia -----\n";
         std::cout << "\nNo hay orcos disponibles para eliminar.\n";
+        pausa();
         return;
     }
 
@@ -2399,8 +2618,11 @@ void eliminarOrco(Especie_Orco*& cabezaOrco) {
     mostrarOrcos(cabezaOrco);
 
     int seleccionOrco;
-    std::cout << "Seleccione el número del orco que desea eliminar: ";
+    std::cout << "Seleccione el numero del orco que desea eliminar: ";
     std::cin >> seleccionOrco;
+
+    cin.clear();
+    (cin.ignore(1000,'\n'));
 
     Especie_Orco* actualOrco = cabezaOrco;
     Especie_Orco* anteriorOrco = nullptr;
@@ -2414,8 +2636,8 @@ void eliminarOrco(Especie_Orco*& cabezaOrco) {
 
     if (actualOrco == nullptr) {
         std::cout << "----------- ERROR -----------";
-        std::cout << "\nEl número ingresado es:" << actualOrco;
-        std::cout << "\nSelección inválida: Ese numero de orco no existe en la lista\n.";
+        std::cout << "\nEl numero ingresado es:" << actualOrco;
+        std::cout << "\nSeleccion invalida: Ese numero de orco no existe en la lista\n.";
         cout << "Intente nuevamente.\n"<<endl;
         return;
     }
@@ -2427,7 +2649,10 @@ void eliminarOrco(Especie_Orco*& cabezaOrco) {
     }
 
     delete actualOrco;
+    cout << "\nEliminando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
     std::cout << "Orco eliminado exitosamente!\n";
+    pausa();
 }
 
 //funcion liberar o limpiar la lista de orcos 
@@ -2439,7 +2664,7 @@ void liberarEstructura(Especie_Orco*& cabezaOrco) {
         delete tempOrco;
     }
     cabezaOrco = nullptr;
-    std::cout << "Memoria de la lista de Orcos liberada correctamente.\n";
+    std::cout << "La memoria de Orcos fue eliminada correctamente.\n";
 }
 
 
@@ -2448,27 +2673,31 @@ void menuOrcos(Especie_Orco*& cabezaOrco) {
     int opcionOrco = 0;
 
     do {
+        system("cls");
         cout << "\n--- GESTION DE ESPECIES DE ORCOS ---\n";
-        cout << "1. Añadir nueva Especie de orco.\n";
+        cout << "1. Anadir nueva Especie de orco.\n";
         cout << "2. Ver Especies de orcos Disponibles.\n";
         cout << "3. Modificar Especie de Orco Existente.\n";
         cout << "4. Eliminar una Especie de Orco.\n";
         cout << "5. Volver al menu anterior.\n"<<endl;
-        cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         cin >> opcionOrco;
+
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionOrco) {
             case 1: {
                 std::cout << "\n----- Crear Nueva Especie de Orco -----\n";
-                string nombre = validarLongitudString("Ingrese el Nombre de la nueva Especie de Orco (máximo 20 caracteres): ", 20);
+                string nombre = validarLongitudString("Ingrese el Nombre de la nueva Especie de Orco (maximo 20 caracteres): ", 20);
 
                 int dano_base;
-                std::cout << "Ingrese el Daño base. \n";
-                std::cout << "(Debe ser un número entero entre 10 y 60, y múltiplo de 10): \n"<<endl;
+                std::cout << "Ingrese el Dano base. \n";
+                std::cout << "(Debe ser un numero entero entre 10 y 60, y multiplo de 10): ";
                 while (!(std::cin >> dano_base) || dano_base < 10 || dano_base > 60 || dano_base % 10 != 0) {
                     std::cout << "----------- ERROR -----------\n";
                     std::cout << "El valor ingresado es: " << dano_base <<"\n";   
-                    std::cout << "Debe ser un número entero entre 10 y 60, y múltiplo de 10.\n";    
+                    std::cout << "Debe ser un numero entero entre 10 y 60, y multiplo de 10.\n";    
                     std::cout << "Intente nuevamente.\n" << endl;
                     
                     std::cin.clear();
@@ -2478,11 +2707,11 @@ void menuOrcos(Especie_Orco*& cabezaOrco) {
 
                 int salud_base;
                 std::cout << "\nIngrese la Salud base. \n";
-                std::cout << "(Debe ser un número entero entre 100 y 300, y múltiplo de 50): \n"<<endl;
+                std::cout << "(Debe ser un numero entero entre 100 y 300, y multiplo de 50): ";
                 while (!(std::cin >> salud_base) || salud_base < 100 || salud_base > 300 || salud_base % 50 != 0) {
                     std::cout << "----------- ERROR -----------\n";
                     std::cout << "El valor ingresado es: " << salud_base <<"\n";   
-                    std::cout << "Debe ser un número entero entre 100 y 300, y múltiplo de 50.\n";    
+                    std::cout << "Debe ser un numero entero entre 100 y 300, y multiplo de 50.\n";    
                     std::cout << "Intente nuevamente.\n" << endl;
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -2491,23 +2720,27 @@ void menuOrcos(Especie_Orco*& cabezaOrco) {
 
                 int rapidez_base;
                 std::cout << "\nIngrese la Rapidez base. \n";
-                std::cout << "(Debe ser un número entero entre 50 y 200, y múltiplo de 50): \n";
+                std::cout << "(Debe ser un numero entero entre 50 y 200, y multiplo de 50): ";
                 std::cout << "(Valores admitidos: 50, 100, 150, 200): \n" << endl;
                 while (!(std::cin >> rapidez_base) || rapidez_base < 50 || rapidez_base > 200 || rapidez_base % 50 != 0) {
                     std::cout << "----------- ERROR -----------\n";
                     std::cout << "El valor ingresado es: " << salud_base <<"\n";   
-                    std::cout << "Debe ser un número entero entre 50 y 200, y múltiplo de 50.\n";    
+                    std::cout << "Debe ser un numero entero entre 50 y 200, y multiplo de 50.\n";    
                     std::cout << "Intente nuevamente.\n" << endl;
                     std::cin.clear();
                     std::cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
                 std::cin.ignore();
                 
+                cout << "\nCreando datos...\n"<<endl;
+                this_thread::sleep_for(chrono::seconds(3));
                 crearOrco(cabezaOrco, nombre, dano_base, salud_base, rapidez_base);
+                pausa();
                 break;
             }
             case 2: {
                 mostrarOrcos(cabezaOrco);
+                pausa();
                 break;
             }
             case 3: {
@@ -2518,13 +2751,16 @@ void menuOrcos(Especie_Orco*& cabezaOrco) {
                 eliminarOrco(cabezaOrco);
                 break; 
             }
-            case 5:
+            case 5: {
                 cout << "Volviendo al menu anterior...\n";
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
-
+            }
             default:
-                cout << "Opcion inválida. Intente de nuevo.\n";
+                cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
                 break;
+            
         }
     } while (opcionOrco != 5);
 }
@@ -2558,241 +2794,262 @@ void limpiarBuffer() {
     while (cin.get() != '\n');
 }
 
+// Funciones para gestionar salas    
 
-// Funcion para agregar una nueva sala
-void agregarSala(Sala*& listaSalas) {
+void inicializarListaSalas(ListaSalas* lista) {
+    lista->cabeza = nullptr;
+    lista->cantidadSalas = 0;
+
+    // Anadir una Sala predeterminada
+    Sala* nuevaSala = crearSala("Gruta de la Perdicion", 123);
+    lista->cabeza = nuevaSala; 
+    lista->cantidadSalas++;
+}
+
+void agregarSala(ListaSalas* lista) {
+    system("cls");
     cout << "\n----- Crear Nueva Sala -----\n"<<endl;
-    string nombre_sala = validarLongitudString("Ingrese el Nombre de la sala (maximo 20 caracteres): ", 20);
+    string nombre_sala = obtenerNombre("Ingrese el Nombre de la anueva Sala (maximo 20 caracteres): ");
     
     int sala_id;
     cout << "\nIngrese el ID de la sala\n";
-    cout << "(Debe ser un numero entero de tres dígitos): \n";
+    cout << "(Debe ser un numero entero de tres digitos entre 100 y 999): ";
     while (!(cin >> sala_id) || sala_id <100 || sala_id >999) {
         cout << "----------- ERROR -----------\n";
         cout << "El valor ingresado es: " << sala_id;   
-        cout << "Debe ser un numero entero de tres dígitos.\n";    
+        cout << "Debe ser un numero entero de tres digitos entre 100 y 999.\n";    
         cout << "Intente nuevamente." << endl;
         cin.clear();
-        while (cin.get() != '\n');
+        cin.ignore(10000, '\n');
     }
-    cin.ignore(); // Limpiar el buffer
+    cin.ignore(); 
 
+    // Crear la nueva Sala utilizando la funcion
     Sala* nuevaSala = crearSala(nombre_sala, sala_id);
 
-    if (listaSalas == nullptr) {
-        listaSalas = nuevaSala;
+
+
+
+    // Agregar la nueva sala a la lista
+    if (lista->cabeza == nullptr) {
+        lista->cabeza = nuevaSala;
     } else {
-        // Recorrer la lista hasta el final y agregar la nueva sala
-        Sala* actual = listaSalas;
+        Sala* actual = lista->cabeza;
         while (actual->siguiente != nullptr) {
             actual = actual->siguiente;
         }
         actual->siguiente = nuevaSala;
     }
-
-    cout << "Sala " << nombre_sala << " agregada exitosamente.\n";
+    lista->cantidadSalas++;
+    cout << "\nCreando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "Sala '" << nombre_sala << "' agregada exitosamente!\n";
+    pausa();
 }
 
-// Funcion para listar todas las salas y sus adyacencias
-void VerSalas(Sala* listaSalas) {
-    if (listaSalas == nullptr) {
-        cout << "\n----- Lista vacía -----\n";
+// Funcion para listar todas las salas
+void VerSalas(const ListaSalas* lista) {
+    if (lista->cabeza == nullptr) {
+        cout << "\n----- Lista vacia -----\n";
         cout << "\nNo hay salas disponibles.\n";
+        pausa();
         return;
     }
 
-    Sala* actual = listaSalas;
-    int contador = 1;
-    cout << "\n----- Lista de Salas -----\n";
-    while (actual != nullptr) {
-        cout << contador << ". ID: " << actual->id_sala << endl;
-        cout << "   Nombre: " << actual->nombre 
-             << " |  Salas adyacentes: Coming Soon... \n" << endl;
-        actual = actual->siguiente;
-        contador++;
-    }
-    cout << "-------------------------\n";
-}
-
-
-// Funcion para mostrar la informacion de todas las salas registradas
-void mostrarSalas(Sala* cabezaSala) {
-    if (cabezaSala == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
-        std::cout << "\nNo hay Salas disponibles.\n";
-        return;
-    }
-
-    cout << "\n--- Lista de Salas Registradas ---\n";
-    Sala* actualSala = cabezaSala;
-    int indiceSala = 1;
-    while (actualSala != nullptr) {
-        cout << indiceSala++ << ". Nombre: " << actualSala->nombre << endl;
-        cout << " |  ID: " << actualSala->id_sala << "\n"
-             << " |  Salas adyacentes: Coming Soon... \n" << endl;
-        actualSala = actualSala->siguiente;
-
-        if (actualSala->siguiente == nullptr) {
-            break;
-        }
-        actualSala = actualSala->siguiente;
-
-    }
-    cout << "-----------------------------------\n";
-}
-
-
-
+    Sala* actual = lista->cabeza;
+    int i = 1;
     
 
-
-
-// Funcion para modificar las caracteristicas de una sala existente
-void modificarSala(Sala*& listaSalas) {
-    if (listaSalas == nullptr) {
-        cout << "\n--- Lista vacia, no hay salas para modificar ---\n";
-        return;
+    cout << "\n----- Lista de Salas Disponibles -----\n";
+    while (actual != nullptr) {
+        cout << i << ". ID: " << actual->id_sala << endl;
+        cout << "   Nombre: " << actual->nombre 
+             << " | Salas adyacentes: Coming Soon... \n" << endl;
+        actual = actual->siguiente;
+        i++;
     }
-
-    cout << "\n--- Salas disponibles para modificar ---\n";
-    mostrarSalas(listaSalas);
-
-    int seleccionSala;
-    cout << "Seleccione el numero de la sala que desea modificar: ";
-    cin >> seleccionSala;
-    limpiarBuffer();
-
-    if (seleccionSala < 1) {
-        std::cout << "Selección inválida. Intente de nuevo.\n";
-        return;
-    }
-
-    Sala* actualSala = listaSalas;
-    int indiceSala = 1;
-    while (actualSala != nullptr && indiceSala < seleccionSala) {
-        actualSala = actualSala->siguiente;
-        indiceSala++;
-    }
-
-    if (actualSala == nullptr) {
-        cout << "Seleccion invalida. Intente de nuevo.\n";
-        return;
-    }
-
-    int opcionSala;
-    do {
-        cout << "\n--- ¿Qué desea modificar de la Sala '" << actualSala->nombre << "'? ---\n";
-        cout << "1. Nombre de la sala (actual: " << actualSala->nombre << ").\n";
-        cout << "2. ID de la sala (actual: " << actualSala->id_sala << ").\n";
-        cout << "3. Finalizar modificación\n"<<endl;
-        cout << "Ingrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
-        cin >> opcionSala;
-        limpiarBuffer();
-
-        switch (opcionSala) {
-            case 1: {
-                string nombre_sala = validarLongitudString("Ingrese el nuevo Nombre de la sala (maximo 20 caracteres): ", 20);
-                actualSala->nombre = nombre_sala;
-                std::cout << "Nombre de Sala actualizado a '" << actualSala->nombre << "' correctamente.\n";
-                break;
-            }
-            case 2: {
-                int nuevo_id;
-                cout << "Ingrese el nuevo ID de la Sala\n";
-                cout << "(Debe ser un numero entero de tres dígitos): \n";
-                while (!(cin >> nuevo_id) || nuevo_id <100 || nuevo_id >999) {
-                    cout << "----------- ERROR -----------\n";
-                    cout << "El valor ingresado es: " << nuevo_id;   
-                    cout << "Debe ser un numero entero de tres dígitos.\n";    
-                    cout << "Intente nuevamente." << endl;
-                    cin.clear();
-                    while (cin.get() != '\n');
-                }
-                cin.ignore(); // Limpiar el buffer
-
-                actualSala->id_sala = nuevo_id;
-                std::cout << "ID de Sala " << actualSala->nombre << " actualizado a " << actualSala->id_sala << " correctamente.\n";
-                break;
-            }
-            case 3:
-                std::cout << "Modificaciones realizadas correctamente...\n"<<endl;
-                std::cout << "Regresando al menú anterior...\n";
-                break;
-            default:
-                cout << "Opcion inválida. Intente de nuevo.\n";
-        }
-    } while (opcionSala != 3);
+    cout << "\n------------------------------------------------------\n";
 }
 
-
-void eliminarSala(Sala*& listaSalas) {
-    if (listaSalas == nullptr) {
-        std::cout << "\n----- Lista vacía -----\n";
-        std::cout << "\nNo hay Salas disponibles para eliminar.\n";
+// Modificar una sala
+void modificarSala(ListaSalas* listaSalas) {
+    if (listaSalas->cabeza == nullptr) {
+        cout << "\n----- Lista vacia -----\n";
+        cout << "\nNo hay Salas disponibles para modificar.\n";
+        pausa();
         return;
     }
 
-    cout << "\n--- Salas disponibles para eliminar ---\n";
-    mostrarSalas(listaSalas);
+    VerSalas(listaSalas);
 
     int seleccionSala;
-    cout << "Seleccione el numero de la Sala que desea eliminar: ";
+    cout << "Ingrese el numero de la Sala que desea modificar: ";
     cin >> seleccionSala;
+    
+    cin.clear();
+    (cin.ignore(1000,'\n'));
 
-    Sala* actualSala = listaSalas;
-    Sala* anteriorSala = nullptr;
-    int indiceSala = 1;
-
-    while (actualSala != nullptr && indiceSala < seleccionSala) {
-        anteriorSala = actualSala;
-        actualSala = actualSala->siguiente;
-        indiceSala++;
+    Sala* actual = listaSalas->cabeza;
+    int indice = 1;
+    while (actual != nullptr && indice < seleccionSala) {
+        actual = actual->siguiente;
+        indice++;
     }
 
-    if (actualSala == nullptr) {
-        cout << "Seleccion invalida. Intente de nuevo.\n";
+    if (actual == nullptr) {
+        std::cout << "----------- ERROR -----------";
+        std::cout << "\nSeleccion invalida.";
+        cout << "Intente nuevamente.\n."<<endl;
         return;
+    }
+
+    int opcion;
+    system("cls");
+    cout << "\n--- Que desea modificar de la Sala '" << actual->nombre << "'? ---\n";
+    cout << "1. Nombre de la sala (actual: " << actual->nombre << ").\n";
+    cout << "2. ID de la sala (actual: " << actual->id_sala << ").\n";
+    cout << "3. Finalizar modificacion\n"<<endl;
+    cout << "Ingrese el numero correspondiente a la opcion que desea seleccionar: ";
+    cin >> opcion;
+    
+    cin.clear();
+    (cin.ignore(1000,'\n'));
+
+    switch (opcion) {
+        case 1: {
+            string nombre_sala = obtenerNombre("Ingrese el nuevo Nombre de la Sala '" + actual->nombre+ ", ' ,(maximo 20 caracteres): ");
+            actual->nombre = nombre_sala;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
+            cout << "Nombre de Sala actualizado a '" << actual->nombre << "' correctamente.\n";
+            pausa();
+            break;
+        }
+        case 2: {
+            VerSalas(listaSalas);
+            int nuevo_id;
+            cout << "Ingrese el nuevo ID de la Sala\n";
+            cout << "(Debe ser un numero entero de tres digitos entre 100 y 999): ";
+            while (!(cin >> nuevo_id) || nuevo_id <100 || nuevo_id >999) {
+                cout << "----------- ERROR -----------\n";
+                cout << "El valor ingresado es: " << nuevo_id;   
+                cout << "Debe ser un numero entero de tres digitos, entre 100 y 999.\n";    
+                cout << "Intente nuevamente." << endl;
+            }
+
+            Sala* SalaActual = listaSalas->cabeza;
+            for (int i = 1; i < seleccionSala; ++i) {
+                SalaActual = SalaActual->siguiente;
+            }
+                
+            actual->id_sala = nuevo_id;
+            cout << "\nActualizando datos...\n"<<endl;
+            this_thread::sleep_for(chrono::seconds(3));
+            cout << "El ID de la Sala " << SalaActual->nombre << " fue actualizado a " << SalaActual->id_sala<< " correctamente.\n";
+            pausa();
         
+            break;
+        }
+        default:
+            cout << "Opcion del menu invalida.\n";
+            pausa();
+            return;
     }
 
-    if (anteriorSala == nullptr) {
-        listaSalas = actualSala->siguiente; // Eliminar el primer nodo
-    } else {
-        anteriorSala->siguiente = actualSala->siguiente; // Saltar el nodo actual
-    }
-
-    delete actualSala;
-    std::cout << "Sala eliminada exitosamente!\n";
+    cout << "\nSala '" << actual->nombre << "' modificada exitosamente!\n"<<endl;
+    pausa();
 }
 
-// LImpiar memoria
-
-void limpiarSalas(Sala* listaSalas) {
-        Sala* actual = listaSalas;
-        while (actual != nullptr) {
-            Sala* temp = actual;
-            actual = actual->siguiente;
-            delete temp;
-        }
-        listaSalas = nullptr;
-        std::cout << "Memoria de Salas liberada correctamente.\n";
+// Eliminar una sala
+void eliminarSala(ListaSalas* listaSalas) {
+    if (listaSalas->cantidadSalas == 0) {
+        cout << "\n----- Lista vacia -----\n";
+        cout << "No hay salas disponibles para eliminar.\n";
+        pausa();
+        return;
     }
+
+    VerSalas(listaSalas);
+
+    int seleccion;
+    cout << "\nIngrese el numero de la Sala que desea eliminar (1-" << listaSalas->cantidadSalas << "): ";
+    while (!(cin >> seleccion) || seleccion < 1 || seleccion > listaSalas->cantidadSalas) {
+        cout << "----------- ERROR -----------";
+        cout << "\nEl numero ingresado es:" << seleccion << endl;
+        cout << "Entrada invalida: Debe ser un numero entero entre 1 y " << listaSalas->cantidadSalas << ": ";
+        cout << "Intente nuevamente.\n."<<endl;
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+    cin.ignore();
+
+    Sala* actual = listaSalas->cabeza;
+    Sala* anterior = nullptr;
+    int indice = 1;
+
+    // Buscar la sala seleccionada
+    while (actual != nullptr && indice < seleccion) {
+        anterior = actual;
+        actual = actual->siguiente;
+        indice++;
+    }
+
+    if (actual == nullptr) {
+        cout << "----------- ERROR -----------\n";
+        cout << "Seleccion invalida.\n";
+        cout << "Intente nuevamente.\n"<<endl;
+        return;
+    }
+
+    // Eliminar la sala seleccionada
+    if (anterior == nullptr) {
+        // Eliminar la primera sala
+        listaSalas->cabeza = actual->siguiente;
+    } else {
+        // Eliminar una sala intermedia o final
+        anterior->siguiente = actual->siguiente;
+    }
+
+    delete actual;
+    listaSalas->cantidadSalas--;
+    cout << "\nEliminando datos...\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "Sala eliminada exitosamente!\n"<<endl;
+    pausa();
+}
+
+
+// liberar memoria
+void limpiarSalas(ListaSalas* listaSalas) {
+    Sala* actual = listaSalas->cabeza;
+    while (actual != nullptr) {
+        Sala* siguiente = actual->siguiente;
+        delete actual; // Liberar la memoria del nodo actual
+        actual = siguiente;
+    }
+    listaSalas->cabeza = nullptr; // Asegurarse de que la lista este vacia
+    listaSalas->cantidadSalas = 0; // Reiniciar el contador de especies
+    cout << "La memoria de Salas fue eliminada correctamente.\n";
+}
+
 
 // Funcion principal con el menu
-void mostrarMenuSalas() {
-    Sala* listaSalas = nullptr; 
+void mostrarMenuSalas(ListaSalas* listaSalas) {
     int opcionSala;
 
     do {
+        system("cls");
         cout << "\n--- GESTION DE SALAS ---\n";
-        cout << "1. Añadir nueva Sala.\n";
-        cout << "2. Ver Salas disponibles\n";
-        cout << "3. Modificar Sala Existente\n";
-        cout << "4. Eliminar una Sala\n";
-        cout << "5. Volver al menu anterior\n"<<endl;
-        cout << "\nIngrese el número correspondiente a la opcion que desea seleccionar: "<<endl;
+        cout << "1. Anadir nueva Sala.\n";
+        cout << "2. Ver Salas Disponibles.\n";
+        cout << "3. Modificar Sala Existente.\n";
+        cout << "4. Eliminar una Sala.\n";
+        cout << "5. Volver al menu anterior.\n"<<endl;
+        cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         cin >> opcionSala;
-        limpiarBuffer();
+       
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionSala) {
             case 1:
@@ -2800,6 +3057,7 @@ void mostrarMenuSalas() {
                 break;
             case 2:
                 VerSalas(listaSalas);
+                pausa();
                 break;
             case 3:
                 modificarSala(listaSalas);
@@ -2808,10 +3066,13 @@ void mostrarMenuSalas() {
                 eliminarSala(listaSalas);
                 break;
             case 5:
-                cout << "Volviendo al menu anterior...\n";
+                cout << "\nVolviendo al menu principal...\n";
+                this_thread::sleep_for(chrono::seconds(3));
+                system("cls");
                 break;
             default:
-                cout << "Opcion inválida. Intente de nuevo.\n";
+                cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionSala != 5);
 }
@@ -2823,7 +3084,55 @@ void mostrarMenuSalas() {
 
 
 
-// FUNCIONES Y CLASES SECCIÓN IMPLEMENTOS (ARMA, CURA, DEFENSA, PODER MÁGICO)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FUNCIONES Y CLASES SECCIoN IMPLEMENTOS (ARMA, CURA, DEFENSA, PODER MaGICO)
 
 // menu para MOSTRAR todos los implementos por separado
 void mostrarMenuImplemento() {
@@ -2831,26 +3140,30 @@ void mostrarMenuImplemento() {
     
 
     do {
+        system("cls");
         cout << "\n--- GESTION DE IMPLEMENTOS ---\n";
         cout << "1. Administrar implementos de Ataque.\n";
-        cout << "2. Administrar implementos de Curación.\n";
+        cout << "2. Administrar implementos de Curacion.\n";
         cout << "3. Administrar implementos de Defensa.\n";
-        cout << "4. Administrar Poderes Mágicos.\n";
+        cout << "4. Administrar Poderes Magicos.\n";
         cout << "5. Volver al menu anterior.\n"<<endl;
-        cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+        cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
         cin >> opcionx;
+
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcionx) {
             case 1: {
-                gestionarArma(); // ???
+                gestionarArma(); 
                 break;
             }
             case 2:
-                gestionarCura(); // ???
+                gestionarCura(); 
                 break;
 
             case 3:
-                gestionarDefensa(); // ???
+                gestionarDefensa(); 
                 break;
 
             case 4:
@@ -2858,11 +3171,13 @@ void mostrarMenuImplemento() {
                 break;
 
             case 5:
-                cout << "Volviendo al menu principal...\n";
+                cout << "\nVolviendo al menu principal...\n";
+                this_thread::sleep_for(chrono::seconds(3));
                 break;
 
             default:
-                cout << "Opcion invalida. Intente de nuevo.\n";
+                cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcionx != 5);
 }
@@ -2883,41 +3198,47 @@ void mostrarMenuImplemento() {
 // FUNCIONES PRINCIPALES DEL JUEGO
 
 void bienvenida(){
-    cout << "\n¡Bienvenvido a Khazad-Dum!\n";
-    cout << "\n¡Mucho éxito en esta emocionante aventura!\n"<<endl;
-    this_thread::sleep_for(chrono::seconds(3));
-    cout << "\n...Adentrándonos en el mundo mágico...\n";
+    cout << "\n               Bienvenvido a Khazad-Dum!\n";
+    cout << "\n       Mucho exito en esta emocionante aventura!\n"<<endl;
+    this_thread::sleep_for(chrono::seconds(2));
+    cout << "\n                                       Cargando Datos...\n"<<endl;
     this_thread::sleep_for(chrono::seconds(4));
+    cout << "\nPresione ENTER para adentrarnos en el mundo magico...";
+    cin.get(); 
     system("cls");
 
 }
 
 void mostrarMenuPrincipal() {
+
+    system("cls");
     
     cout << "\n     -----   K H A Z A D    D U M    -----\n";
     cout << "Desarrollado por: Aguilar, Aponte, Arreaza, Camejo\n"<<endl;
-    cout << "\n-----  Menú Principal  -----\n"<<endl;
-    cout << "1. ¡Comenzar a jugar!\n";
+    cout << "\n-----  Menu Principal  -----\n"<<endl;
+    cout << "1. Comenzar a jugar!\n";
     cout << "2. Ver elementos del juego (CRUD)\n";
     cout << "3. Salir del juego\n"<<endl;
-    cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+    cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
 }
 
 void mostrarMenuElementos() {
+    system("cls");
     cout << "\n--- GESTION DE ELEMENTOS DEL JUEGO ---\n";
     cout << "1. Administrar Heroes.\n";
     cout << "2. Administrar Orcos.\n";
     cout << "3. Administrar Implementos.\n";
     cout << "4. Administrar Salas.\n";
     cout << "5. Regresar Al Menu Principal.\n"<<endl;
-    cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+    cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
 }
 
 
 void salir() 
 {
-    cout<<"\n¡Gracias por jugar Khazad-dum!" << endl;
-    cout<<"¡Hasta la proxima aventura!\n" << endl;
+    system("cls");
+    cout<<"\nGracias por jugar Khazad-dum!" << endl;
+    cout<<"Hasta la proxima aventura!\n" << endl;
 	system("exit");
 }
 
@@ -2937,7 +3258,7 @@ void salir()
 
 
 
-// FUNCIÓN PRINCIPAL
+// FUNCIoN PRINCIPAL
 
 int main() {
     
@@ -2949,7 +3270,8 @@ int main() {
     ListaPoder_Magico listaPoder_Magico;
     ListaDefensa ListaDefensa;
     ListaEspecies listaEspeciesGlobal;
-    Sala listaSalas;
+    ListaSalas listaSalas;
+    inicializarListaSalas(&listaSalas);
     Especie_Orco* cabezaOrco;
     inicializarListaEspecies(&listaEspeciesGlobal);
     Especie_Orco *cabeza_especies_orco = nullptr;
@@ -2964,71 +3286,88 @@ int main() {
         
         mostrarMenuPrincipal();
         std::cin >> opcion;
-        std::cin.ignore();
+
+        cin.clear();
+        (cin.ignore(1000,'\n'));
 
         switch (opcion) {
-            case 1:
-            std::cout << "\nComing Soon...\n";
-            std::cout << "Regresando al Menú Principal...\n";
-            this_thread::sleep_for(chrono::seconds(4));
-            system("cls");
-            break;
+            case 1: {
+                std::cout << "\nComing Soon...\n";
+                std::cout << "Regresando al Menu Principal...\n";
+                this_thread::sleep_for(chrono::seconds(4));
+                system("cls");
+                break;
+            }
             case 2:
                 do {
                     mostrarMenuElementos();
                     std::cin >> opcion2;
-                    std::cin.ignore();
+
+                    cin.clear();
+                    (cin.ignore(1000,'\n'));
 
                     switch (opcion2) {
-                        case 1:
+                        case 1: {
                             do {
-                                cout << endl << "--- MENÚ PRINCIPAL ---" << endl;
-                                cout << "1. Gestionar Héroes" << endl;
+                                system("cls");
+                                cout << endl << "--- MENU PERSONAJES ---" << endl;
+                                cout << "1. Gestionar Heroes" << endl;
                                 cout << "2. Gestionar Especies" << endl;
                                 cout << "3. Volver al Menu Anterior" << endl;
-                                cout << "\nIngrese el número correspondiente a la opción que desea seleccionar: \n"<<endl;
+                                cout << "\nIngrese el numero correspondiente a la opcion que desea seleccionar: ";
                                 cin >> opcion1;
-                                cin.ignore();
+                                
 
+                                cin.clear();
+                                (cin.ignore(1000,'\n'));
+
+                                cout << "" << endl;
                                 switch (opcion1) {
-                                    case 1:
+                                    case 1: 
                                         gestionarPersonajes(&listaHeroes, &listaEspeciesGlobal);
                                         break;
                                     case 2:
-                                        gestionarEspecies(&listaEspeciesGlobal);
+                                        gestionarEspecies(&listaHeroes, &listaEspeciesGlobal);
                                         break;
                                     case 3:
                                         cout << "Volviendo al menu anterior...\n";
+                                        this_thread::sleep_for(chrono::seconds(3));
                                         break;
                                     default:
-                                        cout << "Opción inválida. Intente de nuevo.\n";
+                                        cout << "\nOpcion invalida. Intente de nuevo.\n";
+                                        pausa();
                                 }
                             } while (opcion1 != 3);
                                 break;
-                        case 2:
+                        }
+                        case 2: {
                             menuOrcos(cabeza_especies_orco);
                             break;
+                        }
                         case 3:
                             mostrarMenuImplemento();
                             break;                      
                         case 4:
-                            mostrarMenuSalas();  
+                            mostrarMenuSalas(&listaSalas);  
                             break;
                         case 5:
-                            std::cout << "Volviendo al menu...\n";
+                            std::cout << "Volviendo al menu anterior...\n";
+                            this_thread::sleep_for(chrono::seconds(3));
                             break;
                         default:
-                            std::cout << "Opción inválida. Intente de nuevo.\n";
+                            std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                            pausa();
                     }
                 } while(opcion2 != 5);
                 break;
             case 3:
-                std::cout << "Saliendo del juego...\n";
+                std::cout << "\nSaliendo del juego...\n";
                 this_thread::sleep_for(chrono::seconds(4));
                 salir();
                 break;
             default:
-                std::cout << "Opción inválida. Intente de nuevo.\n";
+                std::cout << "\nOpcion invalida. Intente de nuevo.\n";
+                pausa();
         }
     } while (opcion != 3);
                 
@@ -3037,10 +3376,7 @@ int main() {
     limpiarHeroes(&listaHeroes);
     limpiarEspecies(&listaEspeciesGlobal);
     liberarEstructura(cabezaOrco);
-    ListaArma.limpiarArma();
-    ListaDefensa.limpiarDefensa();
-    listaCura.limpiarCura();
-    listaPoder_Magico.limpiarPoder_Magico();
+    // Los implementos tienen destructores para limpiar la memoria
 
     return 0;                           
 }                                       
