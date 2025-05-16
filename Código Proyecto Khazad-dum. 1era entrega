@@ -174,7 +174,7 @@ struct ListaSalas {
 
 // FUNCIONES AUXILIARES
 
-void validarLongitudNombre(string& input, int longitudMaxima) {
+void validarLongitudNombre(string& input, size_t longitudMaxima) {
     while (input.length() > longitudMaxima) {
         cout << "\n----------- ERROR -----------\n";
         cout << "El texto ingresado es: " << input << endl;   
@@ -186,7 +186,7 @@ void validarLongitudNombre(string& input, int longitudMaxima) {
 
 string obtenerNombre(const string& prompt) {
     string input;
-    const int longitudMaxima = 20; // Longitud maxima permitida
+    const size_t longitudMaxima = 20; // Longitud maxima permitida
 
     cout << prompt;
     getline(cin, input);
@@ -197,7 +197,7 @@ string obtenerNombre(const string& prompt) {
     return input;
 }
 
-string validarLongitudString(const string& prompt, int longitud) {
+string validarLongitudString(const string& prompt, size_t longitud) {
     string input;
     bool valid = false;
     
@@ -1070,12 +1070,12 @@ public:
 
 
     // Obtener una arma por indice 
-    Arma *obtenerArmaPorIndice(int index) const {
-        if (index < 0 || index >= cantidadArma) {
+    Arma *obtenerArmaPorIndice(size_t index) const {
+        if (index >= cantidadArma) {
             return nullptr;                                           // indice invalido
         }
         Arma *actual = cabeza;
-        for (int i = 0; i < index; ++i) {
+        for (size_t i = 0; i < index; ++i) {
             actual = actual->siguiente;
         }
         return actual;
@@ -1162,7 +1162,7 @@ public:
 
         mostrarArma();
         std::cout << "\nIngrese el numero del Arma a modificar (1-" << obtenerCantidadArma() << "): ";
-        int pos;
+        size_t pos;
         std::cin >> pos;
         std::cin.ignore();
 
@@ -1279,7 +1279,7 @@ public:
 
         mostrarArma();
         std::cout << "\nIngrese el numero del Arma a eliminar (1-" << obtenerCantidadArma() << "): ";  
-        int pos;
+        size_t pos;
         std::cin >> pos;
         std::cin.ignore();
 
@@ -1297,7 +1297,7 @@ public:
             std::cout << "Eliminando Arma: " << actual->nombre << endl;
             delete actual;
         } else {
-            for (int i = 1; i < pos; i++) {
+            for (size_t i = 1; i < pos; i++) {
                 anterior = actual;
                 actual = actual->siguiente;
             }
@@ -1453,12 +1453,12 @@ public:
 
 
     // Obtener una Defensa por indice 
-    Defensa *obtenerDefensaPorIndice(int index) const {
-        if (index < 0 || index >= cantidadDefensa) {
+    Defensa *obtenerDefensaPorIndice(size_t index) const {
+        if (index >= cantidadDefensa) {
             return nullptr;                                           // indice invalido
         }
         Defensa *actual = cabeza;
-        for (int i = 0; i < index; ++i) {
+        for (size_t i = 0; i < index; ++i) {
             actual = actual->siguiente;
         }
         return actual;
@@ -1535,7 +1535,7 @@ public:
 
         mostrarDefensa();
         std::cout << "\nIngrese el numero de la Defensa a modificar (1-" << obtenerCantidadDefensa() << "): ";
-        int pos;
+        size_t pos;
         std::cin >> pos;
         std::cin.ignore();
 
@@ -1636,7 +1636,7 @@ public:
 
         mostrarDefensa();
         std::cout << "\nIngrese el numero del implemento de Defensa a eliminar (1-" << obtenerCantidadDefensa() << "): ";
-        int pos;
+        size_t pos;
         std::cin >> pos;
         std::cin.ignore();
 
@@ -1654,7 +1654,7 @@ public:
             std::cout << "Eliminando implemento de Defensa: " << actual->nombre << endl;
             delete actual;
         } else {
-            for (int i = 1; i < pos; i++) {
+            for (size_t i = 1; i < pos; i++) {
                 anterior = actual;
                 actual = actual->siguiente;
             }
@@ -1816,12 +1816,12 @@ public:
 
 
     // Obtener una cura por indice 
-    Cura *obtenerCuraPorIndice(int index) const {
-        if (index < 0 || index >= cantidadCura) {
+    Cura *obtenerCuraPorIndice(size_t index) const {
+        if (index >= cantidadCura) {
             return nullptr;                                           // indice invalido
         }
         Cura *actual = cabeza;
-        for (int i = 0; i < index; ++i) {
+        for (size_t i = 0; i < index; ++i) {
             actual = actual->siguiente;
         }
         return actual;
@@ -1891,7 +1891,7 @@ public:
 
             mostrarCura();
             std::cout << "\nIngrese el numero del implemento de Curacion a modificar (1-" << obtenerCantidadCura() << "): ";
-            int pos;
+            size_t pos;
             std::cin >> pos;
             std::cin.ignore();
 
@@ -1992,7 +1992,7 @@ public:
 
         mostrarCura();
         std::cout << "\nIngrese el numero del implemento de Curacion a eliminar (1-" << obtenerCantidadCura() << "): ";
-        int pos;
+        size_t pos;
         std::cin >> pos;
         std::cin.ignore();
 
@@ -2012,7 +2012,7 @@ public:
             std::cout << "Eliminando implemento de Curacion: " << actual->nombre << endl;
             delete actual;
         } else {
-            for (int i = 1; i < pos; i++) {
+            for (size_t i = 1; i < pos; i++) {
                 anterior = actual;
                 actual = actual->siguiente;
             }
@@ -2171,12 +2171,12 @@ public:
 
 
     // Obtener una Poder_Magico por indice 
-    Poder_Magico *obtenerPoderPorIndice(int index) const {
-        if (index < 0 || index >= cantidadPoder_Magico) {
+    Poder_Magico *obtenerPoderPorIndice(size_t index) const {
+        if (index >= cantidadPoder_Magico) {
             return nullptr;                                           // indice invalido
         }
         Poder_Magico *actual = cabeza;
-        for (int i = 0; i < index; ++i) {
+        for (size_t i = 0; i < index; ++i) {
             actual = actual->siguiente;
         }
         return actual;
